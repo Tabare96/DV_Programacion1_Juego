@@ -11,7 +11,7 @@ public class Movimiento : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = new Vector3(0, 2, 0);
+        transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class Movimiento : MonoBehaviour
         
         
         float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 movementDirection = new Vector3(horizontal, vertical, 0).normalized;
         transform.position += movementSpeed * Time.deltaTime * movementDirection;
