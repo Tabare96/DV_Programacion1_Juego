@@ -15,6 +15,19 @@ public class Enemigo : MonoBehaviour
 
     private int index = 0;
 
+    
+    // Sprites de dirección
+    [SerializeField]
+    private Sprite upSprite;
+    [SerializeField]
+    private Sprite downSprite;
+    [SerializeField]
+    private Sprite leftSprite;
+    [SerializeField]
+    private Sprite rightSprite;
+
+
+
     private void Update()
     {
         Patrol();
@@ -35,6 +48,29 @@ public class Enemigo : MonoBehaviour
         }
 
         Transform target = waypoints[index];
+
+        //recibo la dirección en la que se mueve
+        Vector3 moveDirection = (target.position - transform.position).normalized;
+        // Utiliza un umbral para determinar la dirección
+        float angle = Vector3.SignedAngle(Vector3.up, moveDirection, Vector3.forward);
+
+        if (angle >= -45f && angle < 45f) // Movimiento hacia arriba
+        {
+            GetComponent<SpriteRenderer>().sprite = upSprite;
+        }
+        else if (angle >= 45f && angle < 135f) // Movimiento hacia la izquierda
+        {
+            GetComponent<SpriteRenderer>().sprite = leftSprite;
+        }
+        else if (angle >= -135f && angle < -45f) // Movimiento hacia la derecha
+        {
+            GetComponent<SpriteRenderer>().sprite = rightSprite;
+        }
+        else // Movimiento hacia abajo
+        {
+            GetComponent<SpriteRenderer>().sprite = downSprite;
+        }
+
         transform.position = Vector3.MoveTowards(transform.position, target.position, movementSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, target.position) < 0.1f)
         {
