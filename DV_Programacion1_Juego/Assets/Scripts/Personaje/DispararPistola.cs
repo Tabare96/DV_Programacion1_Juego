@@ -43,7 +43,7 @@ public class DispararPistola : MonoBehaviour
 
     void Disparar()
     {
-        //Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+        Instantiate(bulletPrefab, firePoint.position, transform.rotation);
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 

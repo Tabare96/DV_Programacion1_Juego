@@ -25,7 +25,7 @@ public class Movimiento : MonoBehaviour
         Vector3 movementDirection = new Vector3(horizontal, vertical, 0).normalized;
         transform.position += movementSpeed * Time.deltaTime * movementDirection;
         
-        Debug.Log(Input.mousePosition);
+        //Debug.Log(Input.mousePosition);
 
     }
 }

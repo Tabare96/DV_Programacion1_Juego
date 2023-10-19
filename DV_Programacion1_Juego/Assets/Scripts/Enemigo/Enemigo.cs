@@ -96,6 +96,9 @@ public class Enemigo : MonoBehaviour
         }
     }
 
+    
+
+    
     public void TakeDamage(int damage)
     {
         vida -= damage; // Reducir la vida por la cantidad de daño recibido
