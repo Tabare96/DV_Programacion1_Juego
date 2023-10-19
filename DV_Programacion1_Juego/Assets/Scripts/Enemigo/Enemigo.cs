@@ -9,7 +9,7 @@ public class Enemigo : MonoBehaviour
 
     [SerializeField]
     private Transform[] waypoints;
-    
+
     [SerializeField]
     private Player player;
 
@@ -17,14 +17,15 @@ public class Enemigo : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 2f)
+        Patrol();
+       /* if (Vector3.Distance(transform.position, player.transform.position) < 2f)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
         }
         else
         {
             Patrol();
-        }
+        }*/
     }
     private void Patrol()
     {
