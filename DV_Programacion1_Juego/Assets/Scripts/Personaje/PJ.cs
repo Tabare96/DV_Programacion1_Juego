@@ -28,10 +28,7 @@ public class PJ : MonoBehaviour
     
     private int magazineAmmo = 7;
 
-    public string direccion;
-
-    
-
+   
 
     // Update is called once per frame
     void Update()
@@ -39,24 +36,7 @@ public class PJ : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            direccion = "Left";
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            direccion = "Right";
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            direccion = "Down";
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            direccion = "Up";
-        }
-
-
+  
         /*Animacion
 
         anim.SetFloat("Horizontal", movement.x);
@@ -74,6 +54,8 @@ public class PJ : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            Debug.Log("Recargaste");
+
             if (magazineAmmo == 0)
             {
                 magazineAmmo = maxMagAmmo;
