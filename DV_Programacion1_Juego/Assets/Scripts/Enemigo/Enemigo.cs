@@ -53,18 +53,18 @@ public class Enemigo : MonoBehaviour
         Vector3 moveDirection = (target.position - transform.position).normalized;
         // Utiliza un umbral para determinar la dirección
         float angle = Vector3.SignedAngle(Vector3.up, moveDirection, Vector3.forward);
-
-        if (angle >= -45f && angle < 45f) // Movimiento hacia arriba
+        
+        if (angle >= -135f && angle < -45f) // Movimiento hacia la derecha
+        {
+            GetComponent<SpriteRenderer>().sprite = rightSprite;
+        }
+        else if (angle >= -45f && angle < 45f) // Movimiento hacia arriba
         {
             GetComponent<SpriteRenderer>().sprite = upSprite;
         }
         else if (angle >= 45f && angle < 135f) // Movimiento hacia la izquierda
         {
             GetComponent<SpriteRenderer>().sprite = leftSprite;
-        }
-        else if (angle >= -135f && angle < -45f) // Movimiento hacia la derecha
-        {
-            GetComponent<SpriteRenderer>().sprite = rightSprite;
         }
         else // Movimiento hacia abajo
         {
