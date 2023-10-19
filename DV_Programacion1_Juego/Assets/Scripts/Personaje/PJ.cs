@@ -84,4 +84,14 @@ public class PJ : MonoBehaviour
         Bullet bullet = Instantiate(prefab, shootingPoint.position, shootingPoint.rotation);
         bullet.speed = bulletSpeed;
     }
+
+    public float slowed(int slowing)
+    {
+        return movementSpeed /= slowing;
+    }
+
+    public float speedRegain(int slowing)
+    {
+        return movementSpeed *= slowing;
+    }
 }
