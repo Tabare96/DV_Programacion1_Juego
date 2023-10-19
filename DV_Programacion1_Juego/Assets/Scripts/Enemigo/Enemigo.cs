@@ -5,6 +5,9 @@ using UnityEngine;
 public class Enemigo : MonoBehaviour
 {
     [SerializeField]
+    private int vida = 3;
+    
+    [SerializeField]
     private float movementSpeed;
 
     [SerializeField]
@@ -12,7 +15,10 @@ public class Enemigo : MonoBehaviour
 
     [SerializeField]
     private Player player;
-
+    
+    [SerializeField]
+    private float detectionDistance = 2f; // Variable serializada para la distancia de detección
+   
     private int index = 0;
 
     
@@ -30,15 +36,14 @@ public class Enemigo : MonoBehaviour
 
     private void Update()
     {
-        Patrol();
-       /* if (Vector3.Distance(transform.position, player.transform.position) < 2f)
+        if (Vector3.Distance(transform.position, player.transform.position) < detectionDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
         }
         else
         {
             Patrol();
-        }*/
+        }
     }
     private void Patrol()
     {
@@ -91,5 +96,25 @@ public class Enemigo : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage) { }
+    public void TakeDamage(int damage)
+    {
+        vida -= damage; // Reducir la vida por la cantidad de daño recibido
+
+        if (vida <= 0)
+        {
+            // matamos al enemigo
+            Destroy(gameObject);
+        }
+        else
+        {
+            StartCoroutine(SlowDownForSeconds(4f)); // Reduce la velocidad por 4 segundos
+        }
+    }
+
+    private IEnumerator SlowDownForSeconds(float seconds)
+    {
+        movementSpeed /= 2f;
+        yield return new WaitForSeconds(seconds); 
+        movementSpeed *= 2f;
+    }
 }
