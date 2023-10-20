@@ -72,9 +72,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+      propertyPath: isBoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 6444847049901842264, guid: bd152c005f84a694aa0cb7147c11b055, type: 3}
     - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: movementSpeed
       value: 5
@@ -99,27 +107,5 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
---- !u!1 &384930348704863131 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6444847049901842264, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
-  m_PrefabInstance: {fileID: 6640344492283890883}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &2053765156
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384930348704863131}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.8700001, y: 1.6600002}
-  m_Direction: 0

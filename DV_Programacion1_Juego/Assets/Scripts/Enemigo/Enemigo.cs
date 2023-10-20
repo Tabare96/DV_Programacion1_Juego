@@ -117,7 +117,7 @@ public class Enemigo : MonoBehaviour
         }
         else
         {
-            StartCoroutine(SlowDownForSeconds(4f)); // Reduce la velocidad por 4 segundos
+            StartCoroutine(SlowDownForSeconds(1f)); // Reduce la velocidad por 4 segundos
         }
     }
 

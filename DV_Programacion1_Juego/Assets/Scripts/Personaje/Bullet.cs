@@ -77,12 +77,13 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+
+        Destroy(gameObject);
         Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
         if (enemigo != null)
         {
             Debug.Log("Le pego a un enemigo");
             enemigo.TakeDamage(1);
-            Destroy(gameObject);
         }
         //Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
         //if (collision.gameObject.CompareTag("Enemigo"))

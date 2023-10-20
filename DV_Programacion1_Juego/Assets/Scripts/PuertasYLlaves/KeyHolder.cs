@@ -22,7 +22,7 @@ public class KeyHolder : MonoBehaviour
         keyList.Remove(keyType);
     }
 
-    public bool ContainsKey (Key.KeyType keyType)
+    public bool ContainsKey(Key.KeyType keyType)
     {
         return keyList.Contains(keyType);
     }
@@ -41,10 +41,15 @@ public class KeyHolder : MonoBehaviour
 
         if (keyDoor != null)
         {
-            if (ContainsKey (keyDoor.GetKeyType())) // Tiene la llave que habre la puerta
+            if (ContainsKey(keyDoor.GetKeyType())) // Tiene la llave que habre la puerta
             {
                 keyDoor.OpenDoor();
                 RemoveKey(keyDoor.GetKeyType());
+            }
+            else
+            {
+                Debug.Log("No tienes la llave");
+
             }
 
         }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6444847049901842263}
   - component: {fileID: 6444847049901842262}
   - component: {fileID: 6444847049901842265}
+  - component: {fileID: 6334955315009920643}
   m_Layer: 0
   m_Name: Enemigo
   m_TagString: Untagged
@@ -97,14 +98,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ec3e8932034fe4ca3b1a279c53e029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  isBoss: 0
+  enemyPrefab: {fileID: 0}
+  vida: 3
+  movementSpeed: 2
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   player: {fileID: 0}
+  detectionDistance: 3
   upSprite: {fileID: 21300000, guid: 5c9887df514796a45bfd7a926775a50d, type: 3}
   downSprite: {fileID: 21300000, guid: 6d4c28c6c1d34a247846bb9638a64045, type: 3}
   leftSprite: {fileID: 21300000, guid: 016cb23b4db91824bb2f002c13d4866b, type: 3}
   rightSprite: {fileID: 21300000, guid: 5897ade948743514496c2ef67c0c7bf3, type: 3}
+--- !u!70 &6334955315009920643
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444847049901842264}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000063329935, y: 0}
+  m_Size: {x: 0.87, y: 1.66}
+  m_Direction: 0
