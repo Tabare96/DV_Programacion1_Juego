@@ -5,8 +5,14 @@ using UnityEngine;
 public class Enemigo : MonoBehaviour
 {
     [SerializeField]
+    private bool isBoss = false;
+
+    [SerializeField]
+    private GameObject enemyPrefab;
+
+    [SerializeField]
     private int vida = 3;
-    
+
     [SerializeField]
     private float movementSpeed;
 
@@ -15,13 +21,13 @@ public class Enemigo : MonoBehaviour
 
     [SerializeField]
     private Player player;
-    
+
     [SerializeField]
-    private float detectionDistance = 2f; // Variable serializada para la distancia de detección
-   
+    private float detectionDistance = 2f; // Variable para la distancia de detección
+
     private int index = 0;
 
-    
+
     // Sprites de dirección
     [SerializeField]
     private Sprite upSprite;
@@ -31,7 +37,6 @@ public class Enemigo : MonoBehaviour
     private Sprite leftSprite;
     [SerializeField]
     private Sprite rightSprite;
-
 
 
     private void Update()
@@ -45,6 +50,7 @@ public class Enemigo : MonoBehaviour
             Patrol();
         }
     }
+
     private void Patrol()
     {
         if (waypoints.Length == 0)
@@ -58,7 +64,7 @@ public class Enemigo : MonoBehaviour
         Vector3 moveDirection = (target.position - transform.position).normalized;
         // Utiliza un umbral para determinar la dirección
         float angle = Vector3.SignedAngle(Vector3.up, moveDirection, Vector3.forward);
-        
+
         if (angle >= -135f && angle < -45f) // Movimiento hacia la derecha
         {
             GetComponent<SpriteRenderer>().sprite = rightSprite;
@@ -96,15 +102,16 @@ public class Enemigo : MonoBehaviour
         }
     }
 
-    
-
-    
     public void TakeDamage(int damage)
     {
         vida -= damage; // Reducir la vida por la cantidad de daño recibido
 
         if (vida <= 0)
         {
+            if (isBoss)
+            {
+                SpawnEnemies();
+            }
             // matamos al enemigo
             Destroy(gameObject);
         }
@@ -117,7 +124,20 @@ public class Enemigo : MonoBehaviour
     private IEnumerator SlowDownForSeconds(float seconds)
     {
         movementSpeed /= 2f;
-        yield return new WaitForSeconds(seconds); 
+        yield return new WaitForSeconds(seconds);
         movementSpeed *= 2f;
+    }
+
+    private void SpawnEnemies()
+    {
+        if (isBoss)
+        {
+            // Asegúrate de que solo el Boss pueda instanciar enemigos
+            Vector3 spawnPosition = transform.position;
+
+            // Instancia dos enemigos a una distancia razonable entre sí
+            Instantiate(enemyPrefab, spawnPosition + new Vector3(2f, 2f, 0f), Quaternion.identity);
+            Instantiate(enemyPrefab, spawnPosition + new Vector3(-2f, -2f, 0f), Quaternion.identity);
+        }
     }
 }

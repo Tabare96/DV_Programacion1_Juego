@@ -17,8 +17,6 @@ public class Movimiento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -26,6 +24,5 @@ public class Movimiento : MonoBehaviour
         transform.position += movementSpeed * Time.deltaTime * movementDirection;
         
         //Debug.Log(Input.mousePosition);
-
     }
 }
