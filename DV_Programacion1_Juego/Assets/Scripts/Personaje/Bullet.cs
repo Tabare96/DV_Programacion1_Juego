@@ -2,25 +2,77 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-[DisallowMultipleComponent]
 public class Bullet : MonoBehaviour
 {
+
     public float speed;
     public float lifespan;
 
-    private Rigidbody2D myRigidbody;
+    [SerializeField]
+    private Rigidbody2D rb;
 
-    void Awake()
+    //private string direccion;
+
+    private void Awake()
     {
-        myRigidbody = GetComponent<Rigidbody2D>();
-        //Destroy(gameObject, lifespan);
+        rb = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, lifespan);
     }
 
+
+    private void Update()
+    {
+        /* Mal hecho
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            direccion = "Left";
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            direccion = "Right";
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            direccion = "Down";
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            direccion = "Up";
+        }
+        else
+        {
+            direccion = direccion;
+        }
+        */
+
+    }
     void FixedUpdate()
     {
-        Quaternion rotation = Quaternion.Euler(0f, 0f, myRigidbody.rotation);
-        myRigidbody.MovePosition(myRigidbody.position + speed * Time.fixedDeltaTime * (Vector2)(rotation * Vector2.up));
+        Quaternion rotation = Quaternion.Euler(0f, 0f, rb.rotation);
+        rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * (Vector2)(rotation * Vector2.right));
+
+        /* MAL
+        if (direccion == "Up")
+        {
+            Quaternion rotation = Quaternion.Euler(0f, 0f, rb.rotation);
+            rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * (Vector2)(rotation * Vector2.up));
+        }
+        else if (direccion == "Right")
+        {
+            Quaternion rotation = Quaternion.Euler(0f, 0f, rb.rotation);
+            rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * (Vector2)(rotation * Vector2.right));
+        }
+        else if (direccion == "Left")
+        {
+            Quaternion rotation = Quaternion.Euler(0f, 0f, rb.rotation);
+            rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * (Vector2)(rotation * Vector2.left));
+        }
+        else if (direccion == "Down")
+        {
+            Quaternion rotation = Quaternion.Euler(0f, 0f, rb.rotation);
+            rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * (Vector2)(rotation * Vector2.down));
+        }
+       */
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -30,6 +82,7 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("Le pego a un enemigo");
             enemigo.TakeDamage(1);
+            Destroy(gameObject);
         }
         //Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
         //if (collision.gameObject.CompareTag("Enemigo"))
@@ -52,4 +105,5 @@ public class Bullet : MonoBehaviour
         //    enemigo.TakeDamage(1); // Llama al método TakeDamage del enemigo
         //}
     }
+
 }

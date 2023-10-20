@@ -20,7 +20,7 @@ public class Enemigo : MonoBehaviour
     private Transform[] waypoints;
 
     [SerializeField]
-    private Player player;
+    private PJ player;
 
     [SerializeField]
     private float detectionDistance = 2f; // Variable para la distancia de detección
@@ -95,7 +95,7 @@ public class Enemigo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Player player = collision.GetComponentInParent<Player>();
+        PJ player = collision.GetComponentInParent<PJ>();
         if (player != null)
         {
             Debug.Log("Veo al jugador");
