@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6444847049901842265}
   - component: {fileID: 6334955315009920643}
   m_Layer: 0
-  m_Name: Enemigo
+  m_Name: Enemigo duplicado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,14 +101,11 @@ MonoBehaviour:
   isBoss: 0
   enemyPrefab: {fileID: 0}
   vida: 3
-  movementSpeed: 2
+  movementSpeed: 3
   waypoints:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   player: {fileID: 0}
-  detectionDistance: 3
+  detectionDistance: 10
   upSprite: {fileID: 21300000, guid: 5c9887df514796a45bfd7a926775a50d, type: 3}
   downSprite: {fileID: 21300000, guid: 6d4c28c6c1d34a247846bb9638a64045, type: 3}
   leftSprite: {fileID: 21300000, guid: 016cb23b4db91824bb2f002c13d4866b, type: 3}
