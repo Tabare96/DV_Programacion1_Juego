@@ -523,7 +523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202555947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.49, y: 10.81, z: 0}
+  m_LocalPosition: {x: 3.52, y: -2.08, z: 0}
   m_LocalScale: {x: 0.18171062, y: 0.18171062, z: 0.18171062}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3274,6 +3274,10 @@ PrefabInstance:
       propertyPath: isBoss
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 384930348704863130, guid: f8de87b2f1c659347b5bd80779418210, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 202555952}
     - target: {fileID: 384930348704863130, guid: f8de87b2f1c659347b5bd80779418210, type: 3}
       propertyPath: enemyPrefab
       value: 
