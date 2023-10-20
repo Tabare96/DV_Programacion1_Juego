@@ -523,7 +523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202555947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.29, y: 5.13, z: 0}
+  m_LocalPosition: {x: 4.14, y: -3.09, z: 0}
   m_LocalScale: {x: 0.18171062, y: 0.18171062, z: 0.18171062}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -771,7 +771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7294909526231479555, guid: 627472d831b95fc4284116abcf6a71e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7294909526231479555, guid: 627472d831b95fc4284116abcf6a71e9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3340,6 +3340,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1940906032}
     - target: {fileID: 384930348704863130, guid: f8de87b2f1c659347b5bd80779418210, type: 3}
+      propertyPath: movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 384930348704863130, guid: f8de87b2f1c659347b5bd80779418210, type: 3}
+      propertyPath: detectionDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 384930348704863130, guid: f8de87b2f1c659347b5bd80779418210, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
       objectReference: {fileID: 226971196}
@@ -4191,7 +4199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7294909526231479555, guid: 627472d831b95fc4284116abcf6a71e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7294909526231479555, guid: 627472d831b95fc4284116abcf6a71e9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5477,7 +5485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7294909526231479555, guid: 627472d831b95fc4284116abcf6a71e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7294909526231479555, guid: 627472d831b95fc4284116abcf6a71e9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6363,10 +6371,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3107260568388559681, guid: 627472d831b95fc4284116abcf6a71e9, type: 3}
-      propertyPath: slowing
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2883828012497479178, guid: 627472d831b95fc4284116abcf6a71e9, type: 3}
       propertyPath: m_Name
       value: Trampa
