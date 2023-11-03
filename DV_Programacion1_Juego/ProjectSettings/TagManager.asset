@@ -12,10 +12,10 @@ TagManager:
   - Paredes
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Piso
+  - Paredes detras
+  - Personajes
+  - Paredes frontales
   - 
   - 
   - 
@@ -39,6 +39,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Piso
+    uniqueID: 139038173
+    locked: 0
+  - name: Paredes Detras
+    uniqueID: 2484672507
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Personajes
+    uniqueID: 3081280719
+    locked: 0
+  - name: Paredes Frontales
+    uniqueID: 878364313
     locked: 0
