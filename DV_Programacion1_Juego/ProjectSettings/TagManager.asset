@@ -45,6 +45,9 @@ TagManager:
   - name: Paredes Detras
     uniqueID: 2484672507
     locked: 0
+  - name: BoxWalls
+    uniqueID: 3520401189
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
