@@ -106,5 +106,4 @@ public class Bullet : MonoBehaviour
         //    enemigo.TakeDamage(1); // Llama al método TakeDamage del enemigo
         //}
     }
-
 }

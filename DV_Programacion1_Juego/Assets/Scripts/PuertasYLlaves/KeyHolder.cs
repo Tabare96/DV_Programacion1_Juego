@@ -15,6 +15,7 @@ public class KeyHolder : MonoBehaviour
     {
         Debug.Log("Agarro la llave " + keyType);
         keyList.Add(keyType);
+        SoundManager.Instance.PlayKeyGrabSound();
     }
 
     public void RemoveKey(Key.KeyType keyType)
@@ -45,6 +46,7 @@ public class KeyHolder : MonoBehaviour
             {
                 keyDoor.OpenDoor();
                 RemoveKey(keyDoor.GetKeyType());
+                SoundManager.Instance.PlayOpenDoorSound();
             }
             else
             {
