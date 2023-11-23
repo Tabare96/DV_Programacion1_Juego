@@ -50,8 +50,8 @@ public class KeyHolder : MonoBehaviour
             }
             else
             {
+                SoundManager.Instance.PlayCloseDoorSound();
                 Debug.Log("No tienes la llave");
-
             }
 
         }

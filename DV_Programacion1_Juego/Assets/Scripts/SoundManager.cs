@@ -5,6 +5,8 @@ public class SoundManager : MonoBehaviour
     private static SoundManager instance;
     [SerializeField] private AudioClip keyGrabSound; // Sonido para cuando se agarra la llave
     [SerializeField] private AudioClip OpenDoorSound; // Sonido para cuando se abre la puerta
+    [SerializeField] private AudioClip CloseDoorSound; // Sonido para cuando está cerrada la puerta
+
 
     public static SoundManager Instance
     {
@@ -72,6 +74,13 @@ public class SoundManager : MonoBehaviour
         if (OpenDoorSound != null)
         {
             sfxAudioSource.PlayOneShot(OpenDoorSound);
+        }
+    }
+    public void PlayCloseDoorSound()
+    {
+        if (CloseDoorSound != null)
+        {
+            sfxAudioSource.PlayOneShot(CloseDoorSound);
         }
     }
 }

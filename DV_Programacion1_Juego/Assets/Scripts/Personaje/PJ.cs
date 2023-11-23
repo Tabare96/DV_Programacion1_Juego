@@ -48,9 +48,18 @@ public class PJ : MonoBehaviour
 
     static public string direccion;
 
-    // Sonido disparo
-    [SerializeField] private AudioClip shootSFX;
     
+    [SerializeField] private AudioClip shootSFX; // Sonido disparo
+    [SerializeField] private AudioClip deathSFX; // Sonido muerte
+
+    [SerializeField] private List<AudioClip> walkSounds; // Lista de sonidos de pasos
+    private AudioSource footstepAudioSource;
+
+    
+    void Start()
+    {
+        footstepAudioSource = GetComponent<AudioSource>(); // Inicializamos el audio source
+    }
 
     // Update is called once per frame
     void Update()
@@ -84,13 +93,6 @@ public class PJ : MonoBehaviour
             shootingPoint = shootingPointUp;
         }
 
-        /*Animacion
-
-        anim.SetFloat("Horizontal", movement.x);
-        anim.SetFloat("Vertical", movement.y);
-        anim.SetFloat("Speed", movement.sqrMagnitude);
-        */
-
         if (Input.GetKeyDown(KeyCode.Space) && magazineAmmo > 0)
         {
             shoot();
@@ -112,18 +114,21 @@ public class PJ : MonoBehaviour
                 magazineAmmo = maxMagAmmo + 1;
             }
         }
-
-
-
-        /* if (health <= 0)
-         {
-             Debug.Log("Me mori");
-         }*/
     }
 
     void FixedUpdate()
     {
         myRigidbody.MovePosition(myRigidbody.position + movement * movementSpeed * Time.fixedDeltaTime);
+
+        // Reproduce un sonido de paso aleatorio cuando el personaje se mueve
+        if (movement.magnitude > 0.1f && !footstepAudioSource.isPlaying)
+        {
+            // Elegir aleatoriamente un sonido de paso de la lista
+            AudioClip randomWalkSound = walkSounds[Random.Range(0, walkSounds.Count)];
+
+            // Reproducir el sonido de paso seleccionado
+            footstepAudioSource.PlayOneShot(randomWalkSound);
+        }
     }
 
     public void shoot()
@@ -144,22 +149,6 @@ public class PJ : MonoBehaviour
         return movementSpeed *= slowing;
     }
 
-    /*public void TakeDamage(int damage)
-    {
-        // Reproducir sonido de daño.
-
-        health -= damage;
-
-        if (health <= 0)
-        {
-            Debug.Log("Me mori");
-        }
-        else
-        {
-            Debug.Log("Me lastimaron " + health);
-        }
-    }*/
-
     public void TakeDamage(int damage)
     {
         health -= damage; // Reducir la vida por la cantidad de daño recibido
@@ -167,6 +156,8 @@ public class PJ : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("Me mori");
+            
+            SoundManager.Instance.PlaySound(deathSFX);
         }
     }
 
