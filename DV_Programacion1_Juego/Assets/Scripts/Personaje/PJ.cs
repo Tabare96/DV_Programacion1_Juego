@@ -50,15 +50,7 @@ public class PJ : MonoBehaviour
 
     // Sonido disparo
     [SerializeField] private AudioClip shootSFX;
-    private AudioSource miAudioSource;
-
-
-
-    private void OnEnable()
-    {
-        // Sonido disparo
-        miAudioSource = GetComponent<AudioSource>();
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -139,7 +131,7 @@ public class PJ : MonoBehaviour
         Bullet bullet = Instantiate(prefab, shootingPoint.position, shootingPoint.rotation);
         bullet.speed = bulletSpeed;
         // sonido
-        miAudioSource.PlayOneShot(shootSFX);
+        SoundManager.Instance.PlaySound(shootSFX);
     }
 
     public float slowed(float slowing)

@@ -41,13 +41,13 @@ public class Enemigo : MonoBehaviour
     // Sonido
     [SerializeField] private AudioClip danioSFX;
     [SerializeField] private AudioClip muerteSFX;
-    private AudioSource miAudioSource;
+   /* private AudioSource miAudioSource;*/
 
-    private void OnEnable()
+   /* private void OnEnable()
     {
         // Sonido disparo
         miAudioSource = GetComponent<AudioSource>();
-    }
+    }*/
 
 
     private void Update()
@@ -119,7 +119,7 @@ public class Enemigo : MonoBehaviour
 
         if (vida <= 0)
         {
-            miAudioSource.PlayOneShot(muerteSFX);
+            /*miAudioSource.PlayOneShot(muerteSFX);
             if (miAudioSource.isPlaying)
             {
                 Debug.Log("Sonando");
@@ -127,7 +127,7 @@ public class Enemigo : MonoBehaviour
             else
             {
                 Debug.Log("No sonando");
-            }
+            }*/
             if (isBoss)
             {
                 SpawnEnemies();
