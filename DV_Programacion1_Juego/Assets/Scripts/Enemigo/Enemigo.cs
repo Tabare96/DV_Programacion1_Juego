@@ -38,6 +38,17 @@ public class Enemigo : MonoBehaviour
     [SerializeField]
     private Sprite rightSprite;
 
+    // Sonido
+    [SerializeField] private AudioClip danioSFX;
+    [SerializeField] private AudioClip muerteSFX;
+    private AudioSource miAudioSource;
+
+    private void OnEnable()
+    {
+        // Sonido disparo
+        miAudioSource = GetComponent<AudioSource>();
+    }
+
 
     private void Update()
     {
@@ -108,16 +119,30 @@ public class Enemigo : MonoBehaviour
 
         if (vida <= 0)
         {
+            miAudioSource.PlayOneShot(muerteSFX);
+            if (miAudioSource.isPlaying)
+            {
+                Debug.Log("Sonando");
+            }
+            else
+            {
+                Debug.Log("No sonando");
+            }
             if (isBoss)
             {
                 SpawnEnemies();
             }
+
+            // Reproduce el sonido de muerte utilizando el SoundManager
+            SoundManager.Instance.PlaySound(muerteSFX);
+
             // matamos al enemigo
             Destroy(gameObject);
         }
         else
         {
             StartCoroutine(SlowDownForSeconds(1f)); // Reduce la velocidad por 4 segundos
+            SoundManager.Instance.PlaySound(danioSFX);
         }
     }
 
@@ -132,7 +157,6 @@ public class Enemigo : MonoBehaviour
     {
         if (isBoss)
         {
-            // Asegúrate de que solo el Boss pueda instanciar enemigos
             Vector3 spawnPosition = transform.position;
 
             // Instancia dos enemigos a una distancia razonable entre sí

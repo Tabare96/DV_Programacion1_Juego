@@ -48,8 +48,17 @@ public class PJ : MonoBehaviour
 
     static public string direccion;
 
+    // Sonido disparo
+    [SerializeField] private AudioClip shootSFX;
+    private AudioSource miAudioSource;
 
 
+
+    private void OnEnable()
+    {
+        // Sonido disparo
+        miAudioSource = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -129,6 +138,8 @@ public class PJ : MonoBehaviour
     {
         Bullet bullet = Instantiate(prefab, shootingPoint.position, shootingPoint.rotation);
         bullet.speed = bulletSpeed;
+        // sonido
+        miAudioSource.PlayOneShot(shootSFX);
     }
 
     public float slowed(float slowing)
@@ -166,7 +177,7 @@ public class PJ : MonoBehaviour
             Debug.Log("Me mori");
         }
     }
-    
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
