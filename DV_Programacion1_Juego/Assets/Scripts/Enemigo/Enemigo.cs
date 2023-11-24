@@ -38,10 +38,18 @@ public class Enemigo : MonoBehaviour
     [SerializeField]
     private Sprite rightSprite;
 
+   /* [Header("Animaciones")]
+    private Animator animator;*/
+
     // Sonido
     [SerializeField] private AudioClip danioSFX;
     [SerializeField] private AudioClip muerteSFX;
     
+   /* private void Start()
+    {
+        animator = GetComponent<Animator>();
+        
+    }*/
 
     private void Update()
     {
