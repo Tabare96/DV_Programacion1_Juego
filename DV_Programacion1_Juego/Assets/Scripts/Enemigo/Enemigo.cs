@@ -115,9 +115,9 @@ public class Enemigo : MonoBehaviour
         {
             animator.SetFloat("horizontal", direction.x);
             animator.SetFloat("vertical", direction.y);
-            animator.Play("run");
+            //animator.Play("run");
         }
-        else animator.Play("Idle");
+        //else animator.Play("Idle");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
