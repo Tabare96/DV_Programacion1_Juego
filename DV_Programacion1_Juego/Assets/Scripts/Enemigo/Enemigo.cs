@@ -38,18 +38,16 @@ public class Enemigo : MonoBehaviour
     [SerializeField]
     private Sprite rightSprite;
 
-   /* [Header("Animaciones")]
-    private Animator animator;*/
-
+    /* [Header("Animaciones")]*/
+    [SerializeField] private Animator animator;
+    Vector2 direction;
     // Sonido
     [SerializeField] private AudioClip danioSFX;
     [SerializeField] private AudioClip muerteSFX;
-    
-   /* private void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
-        
-    }*/
+    }
 
     private void Update()
     {
@@ -77,22 +75,28 @@ public class Enemigo : MonoBehaviour
         // Utiliza un umbral para determinar la dirección
         float angle = Vector3.SignedAngle(Vector3.up, moveDirection, Vector3.forward);
 
+
         if (angle >= -135f && angle < -45f) // Movimiento hacia la derecha
         {
-            GetComponent<SpriteRenderer>().sprite = rightSprite;
+            direction = Vector2.right;
+            //GetComponent<SpriteRenderer>().sprite = rightSprite;
         }
         else if (angle >= -45f && angle < 45f) // Movimiento hacia arriba
         {
-            GetComponent<SpriteRenderer>().sprite = upSprite;
+            direction = Vector2.up;
+            //GetComponent<SpriteRenderer>().sprite = upSprite;
         }
         else if (angle >= 45f && angle < 135f) // Movimiento hacia la izquierda
         {
-            GetComponent<SpriteRenderer>().sprite = leftSprite;
+            direction = Vector2.left;
+            //GetComponent<SpriteRenderer>().sprite = leftSprite;
         }
         else // Movimiento hacia abajo
         {
-            GetComponent<SpriteRenderer>().sprite = downSprite;
+            direction = Vector2.down;
+            //GetComponent<SpriteRenderer>().sprite = downSprite;
         }
+        Animations();
 
         transform.position = Vector3.MoveTowards(transform.position, target.position, movementSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, target.position) < 0.1f)
@@ -103,6 +107,17 @@ public class Enemigo : MonoBehaviour
                 index = 0;
             }
         }
+    }
+
+    private void Animations()
+    {
+        if (direction.magnitude != 0)
+        {
+            animator.SetFloat("horizontal", direction.x);
+            animator.SetFloat("vertical", direction.y);
+            animator.Play("run");
+        }
+        else animator.Play("Idle");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
