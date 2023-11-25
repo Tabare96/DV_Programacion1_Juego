@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public class PJ : MonoBehaviour
@@ -158,7 +159,14 @@ public class PJ : MonoBehaviour
             Debug.Log("Me mori");
             
             SoundManager.Instance.PlaySound(deathSFX);
+
+            Invoke("ChangeToMenuMuerteScene", 2f);
         }
+    }
+
+    private void ChangeToMenuMuerteScene()
+    {
+        SceneManager.LoadScene("Menu_muerte");
     }
 
     void OnCollisionEnter2D(Collision2D collision)

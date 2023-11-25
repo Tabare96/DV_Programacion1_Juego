@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    // en el Menu
     public void GoToLevel()
     {
         SceneManager.LoadScene("Nivel_1");
@@ -14,4 +15,11 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    // en el GameOver
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
 }
