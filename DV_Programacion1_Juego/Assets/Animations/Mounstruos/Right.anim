@@ -20,13 +20,17 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 547639718, guid: 65e3129530f70ab439efe56d91897af9, type: 3}
+      value: {fileID: 21300000, guid: 820dd8a843b2ad149b8da0204fd6ed59, type: 3}
     - time: 0.16666667
-      value: {fileID: 1583324318, guid: 65e3129530f70ab439efe56d91897af9, type: 3}
+      value: {fileID: 21300000, guid: de53b84aab0c61649b1574d23d2f4176, type: 3}
     - time: 0.33333334
-      value: {fileID: 671089124, guid: 65e3129530f70ab439efe56d91897af9, type: 3}
+      value: {fileID: 21300000, guid: 83ee9ca7aa7ffac42a9dd954299d12a5, type: 3}
     - time: 0.5
-      value: {fileID: 1159475222, guid: 65e3129530f70ab439efe56d91897af9, type: 3}
+      value: {fileID: 21300000, guid: ff5888605d1d08948bc8df54ef7c10d6, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: ec94d0388a945b44aa63ab73d7a2e895, type: 3}
+    - time: 0.8333333
+      value: {fileID: 21300000, guid: 69db8cae602c9444d856a0cc30007619, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,16 +50,18 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 547639718, guid: 65e3129530f70ab439efe56d91897af9, type: 3}
-    - {fileID: 1583324318, guid: 65e3129530f70ab439efe56d91897af9, type: 3}
-    - {fileID: 671089124, guid: 65e3129530f70ab439efe56d91897af9, type: 3}
-    - {fileID: 1159475222, guid: 65e3129530f70ab439efe56d91897af9, type: 3}
+    - {fileID: 21300000, guid: 820dd8a843b2ad149b8da0204fd6ed59, type: 3}
+    - {fileID: 21300000, guid: de53b84aab0c61649b1574d23d2f4176, type: 3}
+    - {fileID: 21300000, guid: 83ee9ca7aa7ffac42a9dd954299d12a5, type: 3}
+    - {fileID: 21300000, guid: ff5888605d1d08948bc8df54ef7c10d6, type: 3}
+    - {fileID: 21300000, guid: ec94d0388a945b44aa63ab73d7a2e895, type: 3}
+    - {fileID: 21300000, guid: 69db8cae602c9444d856a0cc30007619, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666667
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
