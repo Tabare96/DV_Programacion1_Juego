@@ -45,8 +45,8 @@ TagManager:
   - name: Paredes Detras
     uniqueID: 2484672507
     locked: 0
-  - name: BoxWalls
-    uniqueID: 3520401189
+  - name: Props
+    uniqueID: 2360511899
     locked: 0
   - name: Default
     uniqueID: 0
@@ -56,4 +56,7 @@ TagManager:
     locked: 0
   - name: Paredes Frontales
     uniqueID: 878364313
+    locked: 0
+  - name: EdgeWalls
+    uniqueID: 3520401189
     locked: 0
