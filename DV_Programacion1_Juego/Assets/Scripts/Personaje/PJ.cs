@@ -10,6 +10,16 @@ public class PJ : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
 
+    //[SerializeField]
+    //private float sprintModifier;
+
+    
+    [SerializeField]
+    private float sprintSpeed;
+    [SerializeField]
+    private float walkSpeed;
+    
+
     [SerializeField]
     private Rigidbody2D myRigidbody;
 
@@ -55,8 +65,8 @@ public class PJ : MonoBehaviour
     private bool staminaRegenerated = true;
     private bool sprinting = false;
 
-    [SerializeField] private float staminaDrain = 0.5f;
-    [SerializeField] private float staminaRegen = 0.5f;
+    [SerializeField] private float staminaDrain = 10f;
+    [SerializeField] private float staminaRegen = 5f;
 
     [SerializeField] private Image staminaUI;
     [SerializeField] private Image AmmoUI;
@@ -120,18 +130,45 @@ public class PJ : MonoBehaviour
         {
             //Debug.Log("Recargaste");
 
-            if (magazineAmmo == 0)
+            if (magazineAmmo < maxMagAmmo)
             {
                 magazineAmmo = maxMagAmmo;
             }
-            /*
-            if (magazineAmmo < 0)
-            {
-                magazineAmmo = maxMagAmmo + 1;
-            }
-            */
 
             AmmoUI.fillAmount = (float) magazineAmmo / maxMagAmmo;
+        }
+
+        // Sprint button
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            sprinting = true;
+            sprint(sprinting);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || stamina <= 0)
+        {
+            sprinting = false;
+            movementSpeed = walkSpeed;
+        }
+
+        if (sprinting)
+        {
+            stamina -= staminaDrain * Time.deltaTime;
+            staminaUI.fillAmount = (float)stamina / maxStamina;
+        }
+        else
+        {
+            if (stamina <= maxStamina - 0.01)
+            {
+                stamina += staminaRegen * Time.deltaTime;
+                staminaUI.fillAmount = (float)stamina / maxStamina;
+
+                if (stamina >= maxStamina)
+                {
+                    staminaRegenerated = true;
+                    stamina = maxStamina;
+                }
+            }
         }
     }
 
@@ -150,42 +187,29 @@ public class PJ : MonoBehaviour
         }
 
         
-        // Sprint button
+        
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && stamina > 0)
-        {
-            sprinting = true;
-            
-            movementSpeed *= 1.5f;
+    }
 
-            stamina--;
-        }
+    public void sprint (bool sprinting)
+    {
+       if (staminaRegenerated)
+            {
+                sprinting = true;
+                movementSpeed = sprintSpeed;
+                
+
+                if (stamina <= 0)
+                {
+                    staminaRegenerated = false;
+                }
+            }
         else
         {
             sprinting = false;
         }
-
-        if (!sprinting)
-        {
-            if (stamina <= maxStamina - 0.01)
-            {
-                stamina += staminaRegen * Time.fixedDeltaTime;
-
-                if (stamina >= maxStamina)
-                {
-                    staminaRegenerated = true;
-                }
-            }
-        }
-
     }
 
-    
-    void UpdateStamina (int value)
-    {
-        staminaUI.fillAmount = stamina / maxStamina;
-    }
-    
 
     public void shoot()
     {
