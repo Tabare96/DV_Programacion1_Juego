@@ -166,7 +166,7 @@ public class PJ : MonoBehaviour
 
     private void ChangeToMenuMuerteScene()
     {
-        SceneManager.LoadScene("Menu_muerte");
+        SceneManager.LoadScene("Menu_muerteTab");
     }
 
     void OnCollisionEnter2D(Collision2D collision)

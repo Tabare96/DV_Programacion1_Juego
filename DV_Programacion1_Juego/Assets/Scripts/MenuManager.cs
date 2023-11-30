@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
     // en el Menu
     public void GoToLevel()
     {
-        SceneManager.LoadScene("Nivel_1");
+        SceneManager.LoadScene("Nivel_1Tab");
     }
     
     public void ExitGame()
@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
     // en el GameOver
     public void GoToMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("MenuTab");
     }
 
 }
