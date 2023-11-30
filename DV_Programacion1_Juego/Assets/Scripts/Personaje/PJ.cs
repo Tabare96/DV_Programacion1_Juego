@@ -9,16 +9,13 @@ public class PJ : MonoBehaviour
 {
     [SerializeField]
     private float movementSpeed;
-
-    //[SerializeField]
-    //private float sprintModifier;
-
     
     [SerializeField]
     private float sprintSpeed;
     [SerializeField]
     private float walkSpeed;
-    
+
+    private Animator animator;
 
     [SerializeField]
     private Rigidbody2D myRigidbody;
@@ -38,8 +35,6 @@ public class PJ : MonoBehaviour
 
     private float horizontal;
     private float vertical;
-
-    public Animator anim;
 
     Vector2 movement;
 
@@ -78,10 +73,14 @@ public class PJ : MonoBehaviour
     [SerializeField] private List<AudioClip> walkSounds; // Lista de sonidos de pasos
     private AudioSource footstepAudioSource;
 
+    private int isMovingID = Animator.StringToHash("isMoving");
+
     
     void Start()
     {
         footstepAudioSource = GetComponent<AudioSource>(); // Inicializamos el audio source
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -174,6 +173,13 @@ public class PJ : MonoBehaviour
 
     void FixedUpdate()
     {
+        
+        // REVISAR SI LO QUEREMOS
+        if (movement.x != 0 && movement.y != 0)
+        {
+            return;
+        }
+
         myRigidbody.MovePosition(myRigidbody.position + movement * movementSpeed * Time.fixedDeltaTime);
 
         // Reproduce un sonido de paso aleatorio cuando el personaje se mueve
@@ -187,8 +193,12 @@ public class PJ : MonoBehaviour
         }
 
         
-        
+    }
 
+
+    public void LateUpdate()
+    {
+       animator.SetBool(isMovingID, (movement.x != 0 || movement.y != 0) && !(movement.x != 0 && movement.y != 0));
     }
 
     public void sprint (bool sprinting)
