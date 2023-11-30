@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
@@ -49,7 +50,18 @@ public class PJ : MonoBehaviour
 
     static public string direccion;
 
-    
+    public float maxStamina = 100f;
+    [SerializeField] private float stamina = 100f;
+    private bool staminaRegenerated = true;
+    private bool sprinting = false;
+
+    [SerializeField] private float staminaDrain = 0.5f;
+    [SerializeField] private float staminaRegen = 0.5f;
+
+    [SerializeField] private Image staminaUI;
+    [SerializeField] private Image AmmoUI;
+
+
     [SerializeField] private AudioClip shootSFX; // Sonido disparo
     [SerializeField] private AudioClip deathSFX; // Sonido muerte
 
@@ -99,21 +111,27 @@ public class PJ : MonoBehaviour
             shoot();
             magazineAmmo -= 1;
 
-            Debug.Log(magazineAmmo + " balas en la pistola");
+            AmmoUI.fillAmount = (float) magazineAmmo / maxMagAmmo;
+
+            //Debug.Log(magazineAmmo + " balas en la pistola");
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("Recargaste");
+            //Debug.Log("Recargaste");
 
             if (magazineAmmo == 0)
             {
                 magazineAmmo = maxMagAmmo;
             }
+            /*
             if (magazineAmmo < 0)
             {
                 magazineAmmo = maxMagAmmo + 1;
             }
+            */
+
+            AmmoUI.fillAmount = (float) magazineAmmo / maxMagAmmo;
         }
     }
 
@@ -130,7 +148,44 @@ public class PJ : MonoBehaviour
             // Reproducir el sonido de paso seleccionado
             footstepAudioSource.PlayOneShot(randomWalkSound);
         }
+
+        
+        // Sprint button
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && stamina > 0)
+        {
+            sprinting = true;
+            
+            movementSpeed *= 1.5f;
+
+            stamina--;
+        }
+        else
+        {
+            sprinting = false;
+        }
+
+        if (!sprinting)
+        {
+            if (stamina <= maxStamina - 0.01)
+            {
+                stamina += staminaRegen * Time.fixedDeltaTime;
+
+                if (stamina >= maxStamina)
+                {
+                    staminaRegenerated = true;
+                }
+            }
+        }
+
     }
+
+    
+    void UpdateStamina (int value)
+    {
+        staminaUI.fillAmount = stamina / maxStamina;
+    }
+    
 
     public void shoot()
     {
@@ -152,13 +207,15 @@ public class PJ : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage; // Reducir la vida por la cantidad de daño recibido
+        health -= damage; 
 
         if (health <= 0)
         {
-            Debug.Log("Me mori");
+            //Debug.Log("Me mori");
             
             SoundManager.Instance.PlaySound(deathSFX);
+
+            movementSpeed = 0;
 
             Invoke("ChangeToMenuMuerteScene", 2f);
         }
@@ -174,7 +231,7 @@ public class PJ : MonoBehaviour
         Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
         if (enemigo != null)
         {
-            Debug.Log("Le pego a un enemigo");
+            //Debug.Log("Le pego a un enemigo");
             TakeDamage(1);
         }
     }
