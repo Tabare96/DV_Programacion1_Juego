@@ -49,14 +49,16 @@ public class PJ : MonoBehaviour
 
     static public string direccion;
 
-    
+
     [SerializeField] private AudioClip shootSFX; // Sonido disparo
     [SerializeField] private AudioClip deathSFX; // Sonido muerte
 
     [SerializeField] private List<AudioClip> walkSounds; // Lista de sonidos de pasos
     private AudioSource footstepAudioSource;
 
-    
+    private bool isDead = false; // Bandera para verificar si el jugador está muerto
+
+
     void Start()
     {
         footstepAudioSource = GetComponent<AudioSource>(); // Inicializamos el audio source
@@ -65,6 +67,11 @@ public class PJ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+        {
+            // No permitir que el jugador realice acciones mientras está muerto
+            return;
+        }
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -156,17 +163,28 @@ public class PJ : MonoBehaviour
 
         if (health <= 0)
         {
-            Debug.Log("Me mori");
+            isDead = true; 
             
+            Debug.Log("Me mori");
+
             SoundManager.Instance.PlaySound(deathSFX);
 
-            Invoke("ChangeToMenuMuerteScene", 2f);
+            Time.timeScale = 0f; // Pausar el juego
+
+            StartCoroutine(ChangeToMenuMuerteScene());
         }
     }
 
-    private void ChangeToMenuMuerteScene()
+    private IEnumerator ChangeToMenuMuerteScene()
     {
+        // Esperar 2 segundos
+        yield return new WaitForSecondsRealtime(2f);
+
+        // Cargar la escena del menú
         SceneManager.LoadScene("Menu_muerteTab");
+
+        // Reiniciar la escala de tiempo
+        Time.timeScale = 1f;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
