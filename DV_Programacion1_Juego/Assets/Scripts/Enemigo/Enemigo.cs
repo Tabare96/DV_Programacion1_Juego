@@ -50,9 +50,18 @@ public class Enemigo : MonoBehaviour
     [SerializeField]
     private float distanciaAtaqueCuerpoACuerpo = 1.5f;
 
+    [SerializeField]
+    private float fadeDuration = 0.5f;
+
+    private SpriteRenderer enemyRenderer;
+    private Material enemyMaterial;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        enemyRenderer = GetComponent<SpriteRenderer>();
+        enemyMaterial = Instantiate(enemyRenderer.material);
+        enemyRenderer.material = enemyMaterial;
     }
 
     private void Update()
@@ -115,8 +124,7 @@ public class Enemigo : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         animator.SetBool("isMoving", true);
         estaAtacando = false;
-        //animator.SetBool("atacando", false);
-        // Desactiva los booleanos de ataque según la dirección
+
         animator.SetBool("atacandoDer", false);
         animator.SetBool("atacandoArriba", false);
         animator.SetBool("atacandoIzq", false);
@@ -198,6 +206,8 @@ public class Enemigo : MonoBehaviour
 
         if (vida <= 0)
         {
+            StartCoroutine(FadeAndDestroy());
+
             if (isBoss)
             {
                 SpawnEnemies();
@@ -214,6 +224,23 @@ public class Enemigo : MonoBehaviour
             StartCoroutine(SlowDownForSeconds(1f)); // Reduce la velocidad por 4 segundos
             SoundManager.Instance.PlaySound(danioSFX);
         }
+    }
+
+    private IEnumerator FadeAndDestroy()
+    {
+        float elapsedTime = 0f;
+        Color startColor = enemyMaterial.color;
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, 0f); // Transparente
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            enemyMaterial.color = Color.Lerp(startColor, targetColor, elapsedTime / fadeDuration);
+            yield return null;
+        }
+
+        // Asegurarse de que el objeto sea destruido después del fade
+        Destroy(gameObject);
     }
 
     private IEnumerator SlowDownForSeconds(float seconds)

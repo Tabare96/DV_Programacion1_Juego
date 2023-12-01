@@ -9,7 +9,7 @@ public class PJ : MonoBehaviour
 {
     [SerializeField]
     private float movementSpeed;
-    
+
     [SerializeField]
     private float sprintSpeed;
     [SerializeField]
@@ -74,12 +74,12 @@ public class PJ : MonoBehaviour
 
     [SerializeField] private List<AudioClip> walkSounds; // Lista de sonidos de pasos
     private AudioSource footstepAudioSource;
-    
+
 
 
     private int isMovingID = Animator.StringToHash("isMoving");
 
-    
+
     void Start()
     {
         footstepAudioSource = GetComponent<AudioSource>(); // Inicializamos el audio source
@@ -95,9 +95,9 @@ public class PJ : MonoBehaviour
             // No permitir que el jugador realice acciones mientras est� muerto
             return;
         }
-        
 
-            movement.x = Input.GetAxisRaw("Horizontal");
+
+        movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
         if (Input.GetKey(KeyCode.A))
@@ -131,7 +131,7 @@ public class PJ : MonoBehaviour
             shoot();
             magazineAmmo -= 1;
 
-            AmmoUI.fillAmount = (float) magazineAmmo / maxMagAmmo;
+            AmmoUI.fillAmount = (float)magazineAmmo / maxMagAmmo;
 
             //Debug.Log(magazineAmmo + " balas en la pistola");
         }
@@ -145,7 +145,7 @@ public class PJ : MonoBehaviour
                 magazineAmmo = maxMagAmmo;
             }
 
-            AmmoUI.fillAmount = (float) magazineAmmo / maxMagAmmo;
+            AmmoUI.fillAmount = (float)magazineAmmo / maxMagAmmo;
         }
 
         // Sprint button
@@ -184,7 +184,7 @@ public class PJ : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
         // REVISAR SI LO QUEREMOS
         if (isDead)
         {
@@ -203,7 +203,7 @@ public class PJ : MonoBehaviour
             footstepAudioSource.PlayOneShot(randomWalkSound);
         }
 
-        
+
     }
 
 
@@ -213,25 +213,25 @@ public class PJ : MonoBehaviour
         {
             return;
         }
-        
+
         animator.SetBool(isMovingID, (movement.x != 0 || movement.y != 0) /*&& !(movement.x != 0 && movement.y != 0)*/);
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
     }
 
-    public void sprint (bool sprinting)
+    public void sprint(bool sprinting)
     {
-       if (staminaRegenerated)
-            {
-                sprinting = true;
-                movementSpeed = sprintSpeed;
-                
+        if (staminaRegenerated)
+        {
+            sprinting = true;
+            movementSpeed = sprintSpeed;
 
-                if (stamina <= 0)
-                {
-                    staminaRegenerated = false;
-                }
+
+            if (stamina <= 0)
+            {
+                staminaRegenerated = false;
             }
+        }
         else
         {
             sprinting = false;
@@ -259,7 +259,7 @@ public class PJ : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage; 
+        health -= damage;
 
         if (health <= 0)
         {
@@ -267,8 +267,8 @@ public class PJ : MonoBehaviour
 
             SoundManager.Instance.PlaySound(deathSFX);
 
-            isDead = true; 
-            
+            isDead = true;
+
             Debug.Log("Me mori");
 
             SoundManager.Instance.PlaySound(deathSFX);
