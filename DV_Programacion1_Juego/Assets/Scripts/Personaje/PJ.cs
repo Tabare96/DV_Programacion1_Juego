@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
@@ -8,6 +9,13 @@ public class PJ : MonoBehaviour
 {
     [SerializeField]
     private float movementSpeed;
+    
+    [SerializeField]
+    private float sprintSpeed;
+    [SerializeField]
+    private float walkSpeed;
+
+    private Animator animator;
 
     [SerializeField]
     private Rigidbody2D myRigidbody;
@@ -15,7 +23,9 @@ public class PJ : MonoBehaviour
     [SerializeField]
     private int health;
 
-    // Sprites de dirección
+    private bool isDead = false;
+
+    // Sprites de direcciï¿½n
     [SerializeField]
     private Sprite upSprite;
     [SerializeField]
@@ -27,8 +37,6 @@ public class PJ : MonoBehaviour
 
     private float horizontal;
     private float vertical;
-
-    public Animator anim;
 
     Vector2 movement;
 
@@ -49,19 +57,34 @@ public class PJ : MonoBehaviour
 
     static public string direccion;
 
+    public float maxStamina = 100f;
+    [SerializeField] private float stamina = 100f;
+    private bool staminaRegenerated = true;
+    private bool sprinting = false;
+
+    [SerializeField] private float staminaDrain = 10f;
+    [SerializeField] private float staminaRegen = 5f;
+
+    [SerializeField] private Image staminaUI;
+    [SerializeField] private Image AmmoUI;
+
 
     [SerializeField] private AudioClip shootSFX; // Sonido disparo
     [SerializeField] private AudioClip deathSFX; // Sonido muerte
 
     [SerializeField] private List<AudioClip> walkSounds; // Lista de sonidos de pasos
     private AudioSource footstepAudioSource;
+    
 
-    private bool isDead = false; // Bandera para verificar si el jugador está muerto
 
+    private int isMovingID = Animator.StringToHash("isMoving");
 
+    
     void Start()
     {
         footstepAudioSource = GetComponent<AudioSource>(); // Inicializamos el audio source
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -69,10 +92,12 @@ public class PJ : MonoBehaviour
     {
         if (isDead)
         {
-            // No permitir que el jugador realice acciones mientras está muerto
+            // No permitir que el jugador realice acciones mientras estï¿½ muerto
             return;
         }
-        movement.x = Input.GetAxisRaw("Horizontal");
+        
+
+            movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
         if (Input.GetKey(KeyCode.A))
@@ -106,26 +131,66 @@ public class PJ : MonoBehaviour
             shoot();
             magazineAmmo -= 1;
 
-            Debug.Log(magazineAmmo + " balas en la pistola");
+            AmmoUI.fillAmount = (float) magazineAmmo / maxMagAmmo;
+
+            //Debug.Log(magazineAmmo + " balas en la pistola");
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("Recargaste");
+            //Debug.Log("Recargaste");
 
-            if (magazineAmmo == 0)
+            if (magazineAmmo < maxMagAmmo)
             {
                 magazineAmmo = maxMagAmmo;
             }
-            if (magazineAmmo < 0)
+
+            AmmoUI.fillAmount = (float) magazineAmmo / maxMagAmmo;
+        }
+
+        // Sprint button
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            sprinting = true;
+            sprint(sprinting);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift) || stamina <= 0)
+        {
+            sprinting = false;
+            movementSpeed = walkSpeed;
+        }
+
+        if (sprinting)
+        {
+            stamina -= staminaDrain * Time.deltaTime;
+            staminaUI.fillAmount = (float)stamina / maxStamina;
+        }
+        else
+        {
+            if (stamina <= maxStamina - 0.01)
             {
-                magazineAmmo = maxMagAmmo + 1;
+                stamina += staminaRegen * Time.deltaTime;
+                staminaUI.fillAmount = (float)stamina / maxStamina;
+
+                if (stamina >= maxStamina)
+                {
+                    staminaRegenerated = true;
+                    stamina = maxStamina;
+                }
             }
         }
     }
 
     void FixedUpdate()
     {
+        
+        // REVISAR SI LO QUEREMOS
+        if (isDead)
+        {
+            return;
+        }
+
         myRigidbody.MovePosition(myRigidbody.position + movement * movementSpeed * Time.fixedDeltaTime);
 
         // Reproduce un sonido de paso aleatorio cuando el personaje se mueve
@@ -137,7 +202,42 @@ public class PJ : MonoBehaviour
             // Reproducir el sonido de paso seleccionado
             footstepAudioSource.PlayOneShot(randomWalkSound);
         }
+
+        
     }
+
+
+    public void LateUpdate()
+    {
+        if (isDead)
+        {
+            return;
+        }
+        
+        animator.SetBool(isMovingID, (movement.x != 0 || movement.y != 0) /*&& !(movement.x != 0 && movement.y != 0)*/);
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+    }
+
+    public void sprint (bool sprinting)
+    {
+       if (staminaRegenerated)
+            {
+                sprinting = true;
+                movementSpeed = sprintSpeed;
+                
+
+                if (stamina <= 0)
+                {
+                    staminaRegenerated = false;
+                }
+            }
+        else
+        {
+            sprinting = false;
+        }
+    }
+
 
     public void shoot()
     {
@@ -159,7 +259,7 @@ public class PJ : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage; // Reducir la vida por la cantidad de daño recibido
+        health -= damage; 
 
         if (health <= 0)
         {
@@ -172,6 +272,15 @@ public class PJ : MonoBehaviour
             Time.timeScale = 0f; // Pausar el juego
 
             StartCoroutine(ChangeToMenuMuerteScene());
+            //Debug.Log("Me mori");
+
+            SoundManager.Instance.PlaySound(deathSFX);
+
+            isDead = true;
+            animator.SetBool(isMovingID, false);
+            animator.SetBool("isDead", true);
+
+            Invoke("ChangeToMenuMuerteScene", 2f);
         }
     }
 
@@ -180,7 +289,7 @@ public class PJ : MonoBehaviour
         // Esperar 2 segundos
         yield return new WaitForSecondsRealtime(2f);
 
-        // Cargar la escena del menú
+        // Cargar la escena del menï¿½
         SceneManager.LoadScene("Menu_muerteTab");
 
         // Reiniciar la escala de tiempo
@@ -192,7 +301,7 @@ public class PJ : MonoBehaviour
         Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
         if (enemigo != null)
         {
-            Debug.Log("Le pego a un enemigo");
+            //Debug.Log("Le pego a un enemigo");
             TakeDamage(1);
         }
     }
