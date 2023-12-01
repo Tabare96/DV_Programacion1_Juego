@@ -79,8 +79,6 @@ public class PJ : MonoBehaviour
 
     private int isMovingID = Animator.StringToHash("isMoving");
 
-    private int isMovingID = Animator.StringToHash("isMoving");
-
     
     void Start()
     {
