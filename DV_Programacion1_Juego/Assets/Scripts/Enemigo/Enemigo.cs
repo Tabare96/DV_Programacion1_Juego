@@ -44,6 +44,9 @@ public class Enemigo : MonoBehaviour
     // Sonido
     [SerializeField] private AudioClip danioSFX;
     [SerializeField] private AudioClip muerteSFX;
+
+    public bool estaAtacando = false;
+    
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -51,14 +54,55 @@ public class Enemigo : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < detectionDistance)
+        if (!estaAtacando && Vector3.Distance(transform.position, player.transform.position) < detectionDistance)
         {
+            //recibo la dirección en la que se mueve
+            Vector3 moveDirection = (player.transform.position - transform.position).normalized;
+            // Utiliza un umbral para determinar la dirección
+            float angle = Vector3.SignedAngle(Vector3.up, moveDirection, Vector3.forward);
+            if (angle >= -135f && angle < -45f) // Movimiento hacia la derecha
+            {
+                direction = Vector2.right;
+                //GetComponent<SpriteRenderer>().sprite = rightSprite;
+            }
+            else if (angle >= -45f && angle < 45f) // Movimiento hacia arriba
+            {
+                direction = Vector2.up;
+                //GetComponent<SpriteRenderer>().sprite = upSprite;
+            }
+            else if (angle >= 45f && angle < 135f) // Movimiento hacia la izquierda
+            {
+                direction = Vector2.left;
+                //GetComponent<SpriteRenderer>().sprite = leftSprite;
+            }
+            else // Movimiento hacia abajo
+            {
+                direction = Vector2.down;
+                //GetComponent<SpriteRenderer>().sprite = downSprite;
+            }
+            Animations();
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
         }
-        else
+        else if (!estaAtacando)
         {
             Patrol();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            animator.SetBool("isMoving", false); 
+            estaAtacando = true;
+            animator.SetBool("atacando", true);
+            StartCoroutine(volverAPatrullar(0.6f));
+        }
+    }
+    
+    private IEnumerator volverAPatrullar(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        animator.SetBool("isMoving", true);
+        estaAtacando = false;
+        animator.SetBool("atacando", false);
     }
 
     private void Patrol()
@@ -125,6 +169,7 @@ public class Enemigo : MonoBehaviour
         PJ player = collision.GetComponentInParent<PJ>();
         if (player != null)
         {
+           
             Debug.Log("Veo al jugador");
         }
     }

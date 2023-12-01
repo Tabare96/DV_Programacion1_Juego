@@ -25,7 +25,7 @@ public class PJ : MonoBehaviour
 
     private bool isDead = false;
 
-    // Sprites de dirección
+    // Sprites de direcciï¿½n
     [SerializeField]
     private Sprite upSprite;
     [SerializeField]
@@ -74,6 +74,10 @@ public class PJ : MonoBehaviour
 
     [SerializeField] private List<AudioClip> walkSounds; // Lista de sonidos de pasos
     private AudioSource footstepAudioSource;
+    
+
+
+    private int isMovingID = Animator.StringToHash("isMoving");
 
     private int isMovingID = Animator.StringToHash("isMoving");
 
@@ -88,6 +92,11 @@ public class PJ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDead)
+        {
+            // No permitir que el jugador realice acciones mientras estï¿½ muerto
+            return;
+        }
         
 
             movement.x = Input.GetAxisRaw("Horizontal");
@@ -260,6 +269,19 @@ public class PJ : MonoBehaviour
 
             SoundManager.Instance.PlaySound(deathSFX);
 
+            isDead = true; 
+            
+            Debug.Log("Me mori");
+
+            SoundManager.Instance.PlaySound(deathSFX);
+
+            Time.timeScale = 0f; // Pausar el juego
+
+            StartCoroutine(ChangeToMenuMuerteScene());
+            //Debug.Log("Me mori");
+
+            SoundManager.Instance.PlaySound(deathSFX);
+
             isDead = true;
             animator.SetBool(isMovingID, false);
             animator.SetBool("isDead", true);
@@ -268,9 +290,16 @@ public class PJ : MonoBehaviour
         }
     }
 
-    private void ChangeToMenuMuerteScene()
+    private IEnumerator ChangeToMenuMuerteScene()
     {
+        // Esperar 2 segundos
+        yield return new WaitForSecondsRealtime(2f);
+
+        // Cargar la escena del menï¿½
         SceneManager.LoadScene("Menu_muerteTab");
+
+        // Reiniciar la escala de tiempo
+        Time.timeScale = 1f;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
