@@ -99,20 +99,23 @@ public class Enemigo : MonoBehaviour
 
             if (/*PJ.isDead == true &&*/ Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
             {
-                animator.SetBool("isMoving", false);
-                estaAtacando = true;
+                if(!player.isDead)
+                {
+                    animator.SetBool("isMoving", false);
+                    estaAtacando = true;
 
-                // Activa la animación de ataque según la dirección
-                if (direction == Vector2.right)
-                    animator.SetBool("atacandoDer", true);
-                else if (direction == Vector2.up)
-                    animator.SetBool("atacandoArriba", true);
-                else if (direction == Vector2.left)
-                    animator.SetBool("atacandoIzq", true);
-                else if (direction == Vector2.down)
-                    animator.SetBool("atacandoAbajo", true);
+                    // Activa la animación de ataque según la dirección
+                    if (direction == Vector2.right)
+                        animator.SetBool("atacandoDer", true);
+                    else if (direction == Vector2.up)
+                        animator.SetBool("atacandoArriba", true);
+                    else if (direction == Vector2.left)
+                        animator.SetBool("atacandoIzq", true);
+                    else if (direction == Vector2.down)
+                        animator.SetBool("atacandoAbajo", true);
 
-                StartCoroutine(volverAPatrullar(0.6f));
+                    StartCoroutine(volverAPatrullar(0.6f));
+                }
             }
         }
         else if (!estaAtacando)

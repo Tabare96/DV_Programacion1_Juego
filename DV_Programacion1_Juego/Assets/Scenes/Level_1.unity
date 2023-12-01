@@ -13737,6 +13737,7 @@ GameObject:
   - component: {fileID: 702693898}
   - component: {fileID: 702693900}
   - component: {fileID: 702693899}
+  - component: {fileID: 702693901}
   m_Layer: 0
   m_Name: Props_Front
   m_TagString: Untagged
@@ -16080,6 +16081,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &702693901
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702693897}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
 --- !u!1 &722389644
 GameObject:
   m_ObjectHideFlags: 0
@@ -16237,7 +16254,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16317,7 +16334,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 7
       m_TileMatrixIndex: 1
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16728,20 +16745,20 @@ Tilemap:
     m_Data: {fileID: -1856197884, guid: d5d75b2b813d4b947bb10b89e8389d9f, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 177189632, guid: d5d75b2b813d4b947bb10b89e8389d9f, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 2102317989, guid: d5d75b2b813d4b947bb10b89e8389d9f, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1077633357, guid: d5d75b2b813d4b947bb10b89e8389d9f, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 19
     m_Data: {fileID: 201255796, guid: d5d75b2b813d4b947bb10b89e8389d9f, type: 3}
   - m_RefCount: 15
     m_Data: {fileID: -1904493858, guid: d5d75b2b813d4b947bb10b89e8389d9f, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: -1980435041, guid: e93b6913dd4a66148bb68b3cad18cd07, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1077633357, guid: d5d75b2b813d4b947bb10b89e8389d9f, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 2102317989, guid: d5d75b2b813d4b947bb10b89e8389d9f, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 49
     m_Data:
