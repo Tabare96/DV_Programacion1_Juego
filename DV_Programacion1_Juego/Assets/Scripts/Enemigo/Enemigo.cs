@@ -44,6 +44,9 @@ public class Enemigo : MonoBehaviour
     // Sonido
     [SerializeField] private AudioClip danioSFX;
     [SerializeField] private AudioClip muerteSFX;
+
+    public bool estaAtacando = false;
+    
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -51,7 +54,7 @@ public class Enemigo : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < detectionDistance)
+        if (!estaAtacando && Vector3.Distance(transform.position, player.transform.position) < detectionDistance)
         {
             //recibo la dirección en la que se mueve
             Vector3 moveDirection = (player.transform.position - transform.position).normalized;
@@ -80,10 +83,30 @@ public class Enemigo : MonoBehaviour
             Animations();
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
         }
-        else
+        else if (!estaAtacando)
         {
             Patrol();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            animator.SetBool("isMoving", false); 
+            estaAtacando = true;
+            animator.SetBool("atacando", true);
+            StartCoroutine(volverAPatrullar(0.6f));
+            
+
+
+        }
+
+
+    }
+    private IEnumerator volverAPatrullar(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        animator.SetBool("isMoving", true);
+        estaAtacando = false;
+        animator.SetBool("atacando", false);
     }
 
     private void Patrol()

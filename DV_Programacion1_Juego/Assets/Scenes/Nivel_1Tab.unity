@@ -2306,6 +2306,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &584286294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6444847049901842264, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+  m_PrefabInstance: {fileID: 1953617968}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &584768211
 GameObject:
   m_ObjectHideFlags: 0
@@ -11115,6 +11120,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3079669993540582380, guid: a21768151618cc34e88ccd70264644e0, type: 3}
   m_PrefabInstance: {fileID: 3079669993126605987}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1834705739 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7900986957273284308, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+  m_PrefabInstance: {fileID: 6444847050085314510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1838656149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11481,6 +11491,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202555952}
     - target: {fileID: 6444847049901842265, guid: bd152c005f84a694aa0cb7147c11b055, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1940906033}
+    - target: {fileID: 6444847049901842265, guid: bd152c005f84a694aa0cb7147c11b055, type: 3}
       propertyPath: movementSpeed
       value: 0
       objectReference: {fileID: 0}
@@ -11612,6 +11626,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1531406132}
     m_Modifications:
+    - target: {fileID: 6334955315009920643, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.8863803
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334955315009920643, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334955315009920643, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.008190095
+      objectReference: {fileID: 0}
     - target: {fileID: 6444847049901842263, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -11673,6 +11699,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202555952}
     - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1953617970}
+    - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -11692,6 +11722,10 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 1344602769}
+    - target: {fileID: 8351588723860806923, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+      propertyPath: MinDistance
+      value: 1.0327609
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
 --- !u!4 &1953617969 stripped
@@ -11699,6 +11733,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6444847049901842263, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
   m_PrefabInstance: {fileID: 1953617968}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1953617970 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7900986957273284308, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+  m_PrefabInstance: {fileID: 1953617968}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1953617975
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584286294}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.87, y: 1.66}
+    newSize: {x: 0.87, y: 1.66}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.9916666, y: 1.85}
+  m_EdgeRadius: 0
 --- !u!1 &1982077278
 GameObject:
   m_ObjectHideFlags: 0
@@ -13042,6 +13107,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 202555952}
+    - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1834705739}
     - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
