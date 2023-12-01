@@ -23,7 +23,7 @@ public class PJ : MonoBehaviour
     [SerializeField]
     private int health;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     // Sprites de direcci�n
     [SerializeField]
@@ -285,11 +285,11 @@ public class PJ : MonoBehaviour
 
             isDead = true;
 
-            Debug.Log("Me mori");
+            //Debug.Log("Me mori");
 
             SoundManager.Instance.PlaySound(deathSFX);
 
-            Time.timeScale = 0f; // Pausar el juego
+            //Time.timeScale = 0f; // Pausar el juego
 
             StartCoroutine(ChangeToMenuMuerteScene());
             //Debug.Log("Me mori");
@@ -313,7 +313,7 @@ public class PJ : MonoBehaviour
         SceneManager.LoadScene("Menu_muerteTab");
 
         // Reiniciar la escala de tiempo
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

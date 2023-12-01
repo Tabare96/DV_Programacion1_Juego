@@ -95,7 +95,9 @@ public class Enemigo : MonoBehaviour
             Animations();
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
+            
+
+            if (/*PJ.isDead == true &&*/ Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
             {
                 animator.SetBool("isMoving", false);
                 estaAtacando = true;

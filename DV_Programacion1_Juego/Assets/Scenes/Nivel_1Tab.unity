@@ -292,6 +292,7 @@ MonoBehaviour:
   walkSpeed: 3
   myRigidbody: {fileID: 14820806}
   health: 1
+  isDead: 0
   upSprite: {fileID: 21300000, guid: 4ae0ed7b5162ce742b746d45562ebc26, type: 3}
   downSprite: {fileID: 21300000, guid: 50f94a3c519275248af423deaa225c39, type: 3}
   leftSprite: {fileID: 21300000, guid: 4a0addbb01e80c844aa1f745aef9abd0, type: 3}
@@ -2529,11 +2530,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &584286294 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6444847049901842264, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
-  m_PrefabInstance: {fileID: 1953617968}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &584768211
 GameObject:
   m_ObjectHideFlags: 0
@@ -4084,7 +4080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.125, y: 0.124605134}
   m_AnchorMax: {x: 0.125, y: 0.124605134}
-  m_AnchoredPosition: {x: -23.029419, y: -11.095673}
+  m_AnchoredPosition: {x: -23.029419, y: -11.095642}
   m_SizeDelta: {x: 433.9403, y: 249.0687}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911921476
@@ -11692,7 +11688,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.8916667, y: 2.3}
+    oldSize: {x: 0.87, y: 1.66}
     newSize: {x: 0.87, y: 1.66}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -12391,32 +12387,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7900986957273284308, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
   m_PrefabInstance: {fileID: 1953617968}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1953617975
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 584286294}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.87, y: 1.66}
-    newSize: {x: 0.87, y: 1.66}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.9916666, y: 1.85}
-  m_EdgeRadius: 0
 --- !u!1001 &1984796682
 PrefabInstance:
   m_ObjectHideFlags: 0
