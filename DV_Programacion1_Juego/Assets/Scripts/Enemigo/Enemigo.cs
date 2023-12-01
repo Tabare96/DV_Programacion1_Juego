@@ -86,12 +86,21 @@ public class Enemigo : MonoBehaviour
             Animations();
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
 
-            // Asegúrate de que la distancia sea menor que un cierto valor
             if (Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
             {
                 animator.SetBool("isMoving", false);
                 estaAtacando = true;
-                animator.SetBool("atacandoDer", true);
+
+                // Activa la animación de ataque según la dirección
+                if (direction == Vector2.right)
+                    animator.SetBool("atacandoDer", true);
+                else if (direction == Vector2.up)
+                    animator.SetBool("atacandoArriba", true);
+                else if (direction == Vector2.left)
+                    animator.SetBool("atacandoIzq", true);
+                else if (direction == Vector2.down)
+                    animator.SetBool("atacandoAbajo", true);
+
                 StartCoroutine(volverAPatrullar(0.6f));
             }
         }
@@ -106,7 +115,12 @@ public class Enemigo : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         animator.SetBool("isMoving", true);
         estaAtacando = false;
-        animator.SetBool("atacando", false);
+        //animator.SetBool("atacando", false);
+        // Desactiva los booleanos de ataque según la dirección
+        animator.SetBool("atacandoDer", false);
+        animator.SetBool("atacandoArriba", false);
+        animator.SetBool("atacandoIzq", false);
+        animator.SetBool("atacandoAbajo", false);
     }
 
     private void Patrol()
