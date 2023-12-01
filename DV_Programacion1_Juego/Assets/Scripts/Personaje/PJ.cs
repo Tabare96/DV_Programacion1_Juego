@@ -102,27 +102,43 @@ public class PJ : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            direccion = "Left";
-            GetComponent<SpriteRenderer>().sprite = leftSprite;
+            animator.SetBool("quietoIzquierda", true);
+            animator.SetBool("quietoDerecha", false);
+            animator.SetBool("quietoArriba", false);
+            animator.SetBool("quietoAbajo", false);
+            // direccion = "Left";
+            //  GetComponent<SpriteRenderer>().sprite = leftSprite;
             shootingPoint = shootingPointLeft;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            direccion = "Right";
-            GetComponent<SpriteRenderer>().sprite = rightSprite;
+            animator.SetBool("quietoIzquierda", false);
+            animator.SetBool("quietoDerecha", true);
+            animator.SetBool("quietoArriba", false);
+            animator.SetBool("quietoAbajo", false);
+            //  direccion = "Right";
+            // GetComponent<SpriteRenderer>().sprite = rightSprite;
             shootingPoint = shootingPointRight;
 
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            direccion = "Down";
-            GetComponent<SpriteRenderer>().sprite = downSprite;
+            animator.SetBool("quietoIzquierda", false);
+            animator.SetBool("quietoDerecha", false);
+            animator.SetBool("quietoArriba", false);
+            animator.SetBool("quietoAbajo", true);
+            // direccion = "Down";
+            // GetComponent<SpriteRenderer>().sprite = downSprite;
             shootingPoint = shootingPointDown;
         }
         else if (Input.GetKey(KeyCode.W))
         {
-            direccion = "Up";
-            GetComponent<SpriteRenderer>().sprite = upSprite;
+            animator.SetBool("quietoIzquierda", false);
+            animator.SetBool("quietoDerecha", false);
+            animator.SetBool("quietoArriba", true);
+            animator.SetBool("quietoAbajo", false);
+            // direccion = "Up";
+            // GetComponent<SpriteRenderer>().sprite = upSprite;
             shootingPoint = shootingPointUp;
         }
 
