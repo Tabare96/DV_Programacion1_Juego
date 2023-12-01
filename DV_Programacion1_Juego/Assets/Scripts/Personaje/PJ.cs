@@ -23,6 +23,8 @@ public class PJ : MonoBehaviour
     [SerializeField]
     private int health;
 
+    private bool isDead = false;
+
     // Sprites de dirección
     [SerializeField]
     private Sprite upSprite;
@@ -86,7 +88,9 @@ public class PJ : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
+        
+
+            movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
         if (Input.GetKey(KeyCode.A))
@@ -175,7 +179,7 @@ public class PJ : MonoBehaviour
     {
         
         // REVISAR SI LO QUEREMOS
-        if (movement.x != 0 && movement.y != 0)
+        if (isDead || movement.x != 0 && movement.y != 0)
         {
             return;
         }
@@ -198,7 +202,14 @@ public class PJ : MonoBehaviour
 
     public void LateUpdate()
     {
-       animator.SetBool(isMovingID, (movement.x != 0 || movement.y != 0) && !(movement.x != 0 && movement.y != 0));
+        if (isDead)
+        {
+            return;
+        }
+        
+        animator.SetBool(isMovingID, (movement.x != 0 || movement.y != 0) && !(movement.x != 0 && movement.y != 0));
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
     }
 
     public void sprint (bool sprinting)
@@ -246,10 +257,12 @@ public class PJ : MonoBehaviour
         if (health <= 0)
         {
             //Debug.Log("Me mori");
-            
+
             SoundManager.Instance.PlaySound(deathSFX);
 
-            movementSpeed = 0;
+            isDead = true;
+            animator.SetBool(isMovingID, false);
+            animator.SetBool("isDead", true);
 
             Invoke("ChangeToMenuMuerteScene", 2f);
         }
