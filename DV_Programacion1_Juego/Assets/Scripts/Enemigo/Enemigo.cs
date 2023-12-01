@@ -6,7 +6,7 @@ public class Enemigo : MonoBehaviour
 {
     [SerializeField]
     private bool isBoss = false;
-
+    
     [SerializeField]
     private GameObject enemyPrefab;
 
@@ -61,6 +61,16 @@ public class Enemigo : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         enemyMaterial = enemyRenderer.material;
+    }
+
+    private void Awake()
+    {
+        if (gameObject.name == "EnemigoNuevo(Clone)")
+        {
+            waypoints[0] = GameObject.FindGameObjectWithTag("Player").GetComponent<PJ>().transform;
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PJ>();
+        }
+
     }
 
     private void Update()
