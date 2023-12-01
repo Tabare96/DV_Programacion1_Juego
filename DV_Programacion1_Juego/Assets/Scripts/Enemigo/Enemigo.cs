@@ -94,13 +94,9 @@ public class Enemigo : MonoBehaviour
             estaAtacando = true;
             animator.SetBool("atacando", true);
             StartCoroutine(volverAPatrullar(0.6f));
-            
-
-
         }
-
-
     }
+    
     private IEnumerator volverAPatrullar(float seconds)
     {
         yield return new WaitForSeconds(seconds);
