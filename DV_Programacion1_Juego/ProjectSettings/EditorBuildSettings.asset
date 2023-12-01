@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu_muerteTab.unity
     guid: 8b7ebffdfc35f6b499943f58481db219
+  - enabled: 1
+    path: Assets/Scenes/Level_1.unity
+    guid: b7cab53a3d58b9b47a8415de4d6afff4
   m_configObjects: {}

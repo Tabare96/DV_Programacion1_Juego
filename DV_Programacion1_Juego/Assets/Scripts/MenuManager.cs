@@ -8,9 +8,14 @@ public class MenuManager : MonoBehaviour
     // en el Menu
     public void GoToLevel()
     {
+        SceneManager.LoadScene("Level_1");
+    }
+
+    public void GoToPrototype()
+    {
         SceneManager.LoadScene("Nivel_1Tab");
     }
-    
+
     public void ExitGame()
     {
         Application.Quit();
