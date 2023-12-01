@@ -179,7 +179,7 @@ public class PJ : MonoBehaviour
     {
         
         // REVISAR SI LO QUEREMOS
-        if (isDead || movement.x != 0 && movement.y != 0)
+        if (isDead)
         {
             return;
         }
@@ -207,7 +207,7 @@ public class PJ : MonoBehaviour
             return;
         }
         
-        animator.SetBool(isMovingID, (movement.x != 0 || movement.y != 0) && !(movement.x != 0 && movement.y != 0));
+        animator.SetBool(isMovingID, (movement.x != 0 || movement.y != 0) /*&& !(movement.x != 0 && movement.y != 0)*/);
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
     }
