@@ -46,7 +46,10 @@ public class Enemigo : MonoBehaviour
     [SerializeField] private AudioClip muerteSFX;
 
     public bool estaAtacando = false;
-    
+
+    [SerializeField]
+    private float distanciaAtaqueCuerpoACuerpo = 1.5f;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -82,21 +85,22 @@ public class Enemigo : MonoBehaviour
             }
             Animations();
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
+
+            // Asegúrate de que la distancia sea menor que un cierto valor
+            if (Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
+            {
+                animator.SetBool("isMoving", false);
+                estaAtacando = true;
+                animator.SetBool("atacandoDer", true);
+                StartCoroutine(volverAPatrullar(0.6f));
+            }
         }
         else if (!estaAtacando)
         {
             Patrol();
         }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            animator.SetBool("isMoving", false); 
-            estaAtacando = true;
-            animator.SetBool("atacando", true);
-            StartCoroutine(volverAPatrullar(0.6f));
-        }
     }
-    
+
     private IEnumerator volverAPatrullar(float seconds)
     {
         yield return new WaitForSeconds(seconds);
@@ -169,7 +173,7 @@ public class Enemigo : MonoBehaviour
         PJ player = collision.GetComponentInParent<PJ>();
         if (player != null)
         {
-           
+
             Debug.Log("Veo al jugador");
         }
     }
