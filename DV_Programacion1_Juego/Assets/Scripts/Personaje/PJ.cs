@@ -263,6 +263,10 @@ public class PJ : MonoBehaviour
 
         if (health <= 0)
         {
+            //Debug.Log("Me mori");
+
+            SoundManager.Instance.PlaySound(deathSFX);
+
             isDead = true; 
             
             Debug.Log("Me mori");
