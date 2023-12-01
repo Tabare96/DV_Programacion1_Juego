@@ -4084,7 +4084,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.125, y: 0.124605134}
   m_AnchorMax: {x: 0.125, y: 0.124605134}
-  m_AnchoredPosition: {x: -23.029419, y: -11.095703}
+  m_AnchoredPosition: {x: -23.029419, y: -11.095673}
   m_SizeDelta: {x: 433.9403, y: 249.0687}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911921476
@@ -6492,6 +6492,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1496442392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6444847049901842264, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+  m_PrefabInstance: {fileID: 6444847050085314510}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1519171737
 GameObject:
   m_ObjectHideFlags: 0
@@ -11670,6 +11675,32 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7900986957273284308, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
   m_PrefabInstance: {fileID: 6444847050085314510}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1834705744
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496442392}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.8916667, y: 2.3}
+    newSize: {x: 0.87, y: 1.66}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.9916666, y: 1.85}
+  m_EdgeRadius: 0
 --- !u!1001 &1838656149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12274,7 +12305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6444847049901842263, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.029463377
+      value: -0.02946338
       objectReference: {fileID: 0}
     - target: {fileID: 6444847049901842263, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: m_LocalRotation.w

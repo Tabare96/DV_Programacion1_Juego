@@ -23,12 +23,12 @@ public class Enemigo : MonoBehaviour
     private PJ player;
 
     [SerializeField]
-    private float detectionDistance = 2f; // Variable para la distancia de detección
+    private float detectionDistance = 2f; // Variable para la distancia de detecciï¿½n
 
     private int index = 0;
 
 
-    // Sprites de dirección
+    // Sprites de direcciï¿½n
     [SerializeField]
     private Sprite upSprite;
     [SerializeField]
@@ -46,19 +46,31 @@ public class Enemigo : MonoBehaviour
     [SerializeField] private AudioClip muerteSFX;
 
     public bool estaAtacando = false;
-    
+
+    [SerializeField]
+    private float distanciaAtaqueCuerpoACuerpo = 1.5f;
+
+    [SerializeField]
+    private float fadeDuration = 0.5f;
+
+    private SpriteRenderer enemyRenderer;
+    private Material enemyMaterial;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        enemyRenderer = GetComponent<SpriteRenderer>();
+        enemyMaterial = Instantiate(enemyRenderer.material);
+        enemyRenderer.material = enemyMaterial;
     }
 
     private void Update()
     {
         if (!estaAtacando && Vector3.Distance(transform.position, player.transform.position) < detectionDistance)
         {
-            //recibo la dirección en la que se mueve
+            //recibo la direcciï¿½n en la que se mueve
             Vector3 moveDirection = (player.transform.position - transform.position).normalized;
-            // Utiliza un umbral para determinar la dirección
+            // Utiliza un umbral para determinar la direcciï¿½n
             float angle = Vector3.SignedAngle(Vector3.up, moveDirection, Vector3.forward);
             if (angle >= -135f && angle < -45f) // Movimiento hacia la derecha
             {
@@ -82,6 +94,24 @@ public class Enemigo : MonoBehaviour
             }
             Animations();
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
+            {
+                animator.SetBool("isMoving", false);
+                estaAtacando = true;
+
+                // Activa la animaciï¿½n de ataque segï¿½n la direcciï¿½n
+                if (direction == Vector2.right)
+                    animator.SetBool("atacandoDer", true);
+                else if (direction == Vector2.up)
+                    animator.SetBool("atacandoArriba", true);
+                else if (direction == Vector2.left)
+                    animator.SetBool("atacandoIzq", true);
+                else if (direction == Vector2.down)
+                    animator.SetBool("atacandoAbajo", true);
+
+                StartCoroutine(volverAPatrullar(0.6f));
+            }
         }
         else if (!estaAtacando)
         {
@@ -105,6 +135,18 @@ public class Enemigo : MonoBehaviour
         animator.SetBool("atacando", false);
     }
 
+    private IEnumerator volverAPatrullar(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        animator.SetBool("isMoving", true);
+        estaAtacando = false;
+
+        animator.SetBool("atacandoDer", false);
+        animator.SetBool("atacandoArriba", false);
+        animator.SetBool("atacandoIzq", false);
+        animator.SetBool("atacandoAbajo", false);
+    }
+
     private void Patrol()
     {
         if (waypoints.Length == 0)
@@ -114,9 +156,9 @@ public class Enemigo : MonoBehaviour
 
         Transform target = waypoints[index];
 
-        //recibo la dirección en la que se mueve
+        //recibo la direcciï¿½n en la que se mueve
         Vector3 moveDirection = (target.position - transform.position).normalized;
-        // Utiliza un umbral para determinar la dirección
+        // Utiliza un umbral para determinar la direcciï¿½n
         float angle = Vector3.SignedAngle(Vector3.up, moveDirection, Vector3.forward);
 
 
@@ -169,17 +211,18 @@ public class Enemigo : MonoBehaviour
         PJ player = collision.GetComponentInParent<PJ>();
         if (player != null)
         {
-           
             Debug.Log("Veo al jugador");
         }
     }
 
     public void TakeDamage(int damage)
     {
-        vida -= damage; // Reducir la vida por la cantidad de daño recibido
+        vida -= damage; // Reducir la vida por la cantidad de daï¿½o recibido
 
         if (vida <= 0)
         {
+            StartCoroutine(FadeAndDestroy());
+
             if (isBoss)
             {
                 SpawnEnemies();
@@ -198,6 +241,23 @@ public class Enemigo : MonoBehaviour
         }
     }
 
+    private IEnumerator FadeAndDestroy()
+    {
+        float elapsedTime = 0f;
+        Color startColor = enemyMaterial.color;
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, 0f); // Transparente
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            enemyMaterial.color = Color.Lerp(startColor, targetColor, elapsedTime / fadeDuration);
+            yield return null;
+        }
+
+        // Asegurarse de que el objeto sea destruido despuï¿½s del fade
+        Destroy(gameObject);
+    }
+
     private IEnumerator SlowDownForSeconds(float seconds)
     {
         movementSpeed /= 2f;
@@ -211,7 +271,7 @@ public class Enemigo : MonoBehaviour
         {
             Vector3 spawnPosition = transform.position;
 
-            // Instancia dos enemigos a una distancia razonable entre sí
+            // Instancia dos enemigos a una distancia razonable entre sï¿½
             Instantiate(enemyPrefab, spawnPosition + new Vector3(2f, 2f, 0f), Quaternion.identity);
             Instantiate(enemyPrefab, spawnPosition + new Vector3(-2f, -2f, 0f), Quaternion.identity);
         }
