@@ -5972,7 +5972,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149409216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.64, y: 26.06, z: 0}
+  m_LocalPosition: {x: -5.03, y: 1.74, z: 0}
   m_LocalScale: {x: 0.1576194, y: 0.15761943, z: 0.1576194}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25898,6 +25898,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 149409218}
     - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+      propertyPath: enemyRenderer
+      value: 
+      objectReference: {fileID: 2070266288}
+    - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -25909,6 +25913,10 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 215486446}
+    - target: {fileID: 6444847049901842265, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+      propertyPath: distanciaAtaqueCuerpoACuerpo
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8351588723860806923, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: MinDistance
       value: 0.97305894
@@ -53942,7 +53950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1592423318
 Transform:
   m_ObjectHideFlags: 0
@@ -59520,6 +59528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3a02fc8c32b71e47af1da0669f54ef4, type: 3}
+--- !u!212 &2070266288 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6444847049901842262, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
+  m_PrefabInstance: {fileID: 1342646405}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2079783196
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -279,15 +279,8 @@ public class PJ : MonoBehaviour
 
         if (health <= 0)
         {
-            //Debug.Log("Me mori");
-
-            SoundManager.Instance.PlaySound(deathSFX);
 
             isDead = true;
-
-            //Debug.Log("Me mori");
-
-            SoundManager.Instance.PlaySound(deathSFX);
 
             //Time.timeScale = 0f; // Pausar el juego
 
@@ -307,7 +300,7 @@ public class PJ : MonoBehaviour
     private IEnumerator ChangeToMenuMuerteScene()
     {
         // Esperar 2 segundos
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(0.7f);
 
         // Cargar la escena del men�
         SceneManager.LoadScene("Menu_muerteTab");

@@ -50,18 +50,17 @@ public class Enemigo : MonoBehaviour
     [SerializeField]
     private float distanciaAtaqueCuerpoACuerpo = 1.5f;
 
+    [Header("Desvanecimiento")]
     [SerializeField]
-    private float fadeDuration = 0.5f;
-
+    private float fadeDuration = 2f;
+    [SerializeField]
     private SpriteRenderer enemyRenderer;
     private Material enemyMaterial;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        enemyRenderer = GetComponent<SpriteRenderer>();
-        enemyMaterial = Instantiate(enemyRenderer.material);
-        enemyRenderer.material = enemyMaterial;
+        enemyMaterial = enemyRenderer.material;
     }
 
     private void Update()
@@ -222,7 +221,7 @@ public class Enemigo : MonoBehaviour
             SoundManager.Instance.PlaySound(muerteSFX);
 
             // matamos al enemigo
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else
         {
