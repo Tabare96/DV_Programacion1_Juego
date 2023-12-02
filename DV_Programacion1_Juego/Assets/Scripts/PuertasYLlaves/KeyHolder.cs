@@ -60,7 +60,7 @@ public class KeyHolder : MonoBehaviour
                 // pregunto si el tag de la puerta es "PuertaBoss"
                 if (keyDoor.gameObject.tag == "PuertaFinal")
                 {
-                    SceneManager.LoadScene("MenuTab");
+                    SceneManager.LoadScene("Victoria");
                 }
             }
             else

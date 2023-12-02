@@ -79,6 +79,7 @@ public class Bullet : MonoBehaviour
     {
 
         Destroy(gameObject);
+        
         Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
         if (enemigo != null)
         {
