@@ -75,7 +75,7 @@ public class Enemigo : MonoBehaviour
 
     private void Update()
     {
-        if (!estaAtacando && Vector3.Distance(transform.position, player.transform.position) < detectionDistance)
+        if (!estaAtacando && Vector3.Distance(transform.position, player.transform.position) < detectionDistance && !player.isDead && !player.playingDead)
         {
             //recibo la dirección en la que se mueve
             Vector3 moveDirection = (player.transform.position - transform.position).normalized;
@@ -108,7 +108,7 @@ public class Enemigo : MonoBehaviour
 
             if (/*player.isDead == false &&*/ Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
             {
-                if(!player.isDead)
+                if(!player.isDead && !player.playingDead)
                 {
                     animator.SetBool("isMoving", false);
                     estaAtacando = true;

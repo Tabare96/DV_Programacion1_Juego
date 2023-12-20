@@ -67,6 +67,8 @@ public class PJ : MonoBehaviour
     [SerializeField] private float staminaDrain = 10f;
     [SerializeField] private float staminaRegen = 5f;
 
+    public bool playingDead = false;
+
     [SerializeField] private Image staminaUI;
     [SerializeField] private Image AmmoUI;
 
@@ -146,7 +148,7 @@ public class PJ : MonoBehaviour
             shootingPoint = shootingPointUp;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && magazineAmmo > 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && magazineAmmo > 0)
         {
             shoot();
             magazineAmmo -= 1;
@@ -170,18 +172,18 @@ public class PJ : MonoBehaviour
 
         // Sprint button
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && slow == false)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && slow == false && playingDead == false)
         {
             sprinting = true;
             sprint(sprinting);
         }
-        else if ((Input.GetKeyUp(KeyCode.LeftShift) || stamina <= 0) && slow == false)
+        else if ((Input.GetKeyUp(KeyCode.LeftShift) || stamina <= 0) && slow == false && playingDead == false)
         {
             sprinting = false;
             movementSpeed = walkSpeed;
         }
 
-        if (sprinting && slow == false)
+        if ((sprinting && slow == false) || playingDead)
         {
             stamina -= staminaDrain * Time.deltaTime;
             staminaUI.fillAmount = (float)stamina / maxStamina;
@@ -201,6 +203,25 @@ public class PJ : MonoBehaviour
             }
         }
 
+        // play dead
+
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playingDead = true;
+            PlayDead(playingDead);
+        }
+        else if ((Input.GetKeyUp(KeyCode.Space) || stamina <= 0)) // esta linea de codigo no esta funcionando
+        {
+            playingDead = false;
+            movementSpeed = walkSpeed;
+            deathSoundPlayed = false;
+
+            animator.SetBool("isDead", false);
+            animator.SetBool(isMovingID, true);
+           
+
+        } 
 
     }
 
@@ -216,7 +237,7 @@ public class PJ : MonoBehaviour
         myRigidbody.MovePosition(myRigidbody.position + movement * movementSpeed * Time.fixedDeltaTime);
 
         // Reproduce un sonido de paso aleatorio cuando el personaje se mueve
-        if (movement.magnitude > 0.1f && !footstepAudioSource.isPlaying)
+        if (movement.magnitude > 0.1f && !footstepAudioSource.isPlaying && !playingDead)
         {
             // Elegir aleatoriamente un sonido de paso de la lista
             AudioClip randomWalkSound = walkSounds[Random.Range(0, walkSounds.Count)];
@@ -292,6 +313,34 @@ public class PJ : MonoBehaviour
         return movementSpeed *= slowing;
     }
 
+    
+    public void PlayDead(bool playingDead)
+    {
+        if (staminaRegenerated)
+        {
+            playingDead = true;
+            
+            movementSpeed = 0;
+
+            SoundManager.Instance.PlaySound(deathSFX);
+
+            animator.SetBool(isMovingID, false);
+            animator.SetBool("isDead", true);
+
+
+            if (stamina <= 0)
+            {
+                staminaRegenerated = false;
+            }
+        }
+        else
+        {
+            playingDead = false;
+        }
+    }
+    
+
+
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -320,6 +369,7 @@ public class PJ : MonoBehaviour
             isDead = true;
             animator.SetBool(isMovingID, false);
             animator.SetBool("isDead", true);
+
 
             Invoke("ChangeToMenuMuerteScene", 2f);
         }
