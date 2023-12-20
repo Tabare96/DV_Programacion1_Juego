@@ -162,13 +162,13 @@ public class PJ : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             //Debug.Log("Recargaste");
-
+         
             if (magazineAmmo < maxMagAmmo)
             {
                 magazineAmmo = maxMagAmmo;
+                SoundManager.Instance.PlaySound(reloadSFX);
             }
-
-            SoundManager.Instance.PlaySound(reloadSFX);
+ 
 
             AmmoUI.fillAmount = (float)magazineAmmo / maxMagAmmo;
         }
