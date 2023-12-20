@@ -74,6 +74,7 @@ public class PJ : MonoBehaviour
 
 
     [SerializeField] private AudioClip shootSFX; // Sonido disparo
+    [SerializeField] private AudioClip reloadSFX; // Sonido recarga
     [SerializeField] private AudioClip deathSFX; // Sonido muerte
 
     [SerializeField] private List<AudioClip> walkSounds; // Lista de sonidos de pasos
@@ -166,6 +167,8 @@ public class PJ : MonoBehaviour
             {
                 magazineAmmo = maxMagAmmo;
             }
+
+            SoundManager.Instance.PlaySound(reloadSFX);
 
             AmmoUI.fillAmount = (float)magazineAmmo / maxMagAmmo;
         }

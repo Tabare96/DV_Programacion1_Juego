@@ -173,9 +173,11 @@ MonoBehaviour:
   stamina: 10
   staminaDrain: 4
   staminaRegen: 1
+  playingDead: 0
   staminaUI: {fileID: 0}
   AmmoUI: {fileID: 0}
   shootSFX: {fileID: 8300000, guid: 1217546d8e5bc8a4591b59e1f5ca9c00, type: 3}
+  reloadSFX: {fileID: 8300000, guid: afddfd272cbbd8345803b826ecd7fb43, type: 3}
   deathSFX: {fileID: 8300000, guid: 62eaaeffdff0c9345bb1a50cba7b259c, type: 3}
   walkSounds:
   - {fileID: 8300000, guid: c1363d621b6391540b8b28346b8669ac, type: 3}
