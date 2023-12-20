@@ -106,7 +106,7 @@ public class Enemigo : MonoBehaviour
 
             
 
-            if (/*PJ.isDead == true &&*/ Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
+            if (/*player.isDead == false &&*/ Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
             {
                 if(!player.isDead)
                 {

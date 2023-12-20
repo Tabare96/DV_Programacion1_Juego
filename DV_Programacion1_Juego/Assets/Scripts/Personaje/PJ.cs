@@ -81,6 +81,8 @@ public class PJ : MonoBehaviour
 
     private int isMovingID = Animator.StringToHash("isMoving");
 
+    private bool deathSoundPlayed = false;
+
 
     void Start()
     {
@@ -304,7 +306,16 @@ public class PJ : MonoBehaviour
             StartCoroutine(ChangeToMenuMuerteScene());
             //Debug.Log("Me mori");
 
-            SoundManager.Instance.PlaySound(deathSFX);
+            if (deathSoundPlayed == false)
+            {
+                SoundManager.Instance.PlaySound(deathSFX);
+                deathSoundPlayed = true;
+            }
+            else
+            {
+                return;
+            }
+           
 
             isDead = true;
             animator.SetBool(isMovingID, false);
