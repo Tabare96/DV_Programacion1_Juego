@@ -87,7 +87,6 @@ public class PJ : MonoBehaviour
 
     private int isMovingID = Animator.StringToHash("isMoving");
 
-    private bool deathSoundPlayed = false;
 
 
     void Start()
@@ -193,9 +192,14 @@ public class PJ : MonoBehaviour
             movementSpeed = walkSpeed;
         }
 
-        if ((sprinting && slow == false) || playingDead)
+        if ((sprinting && slow == false))
         {
             stamina -= staminaDrain * Time.deltaTime;
+            staminaUI.fillAmount = (float)stamina / maxStamina;
+        }
+        else if (playingDead) //stamina drain por hacerse el muerto es mas lento que por correr
+        {
+            stamina -= (staminaDrain/2) * Time.deltaTime;
             staminaUI.fillAmount = (float)stamina / maxStamina;
         }
         else
@@ -221,13 +225,14 @@ public class PJ : MonoBehaviour
             playingDead = true;
             PlayDead(playingDead);
         }
-        else if ((Input.GetKeyUp(KeyCode.Space) || stamina <= 0)) // esta linea de codigo no esta funcionando
+        else if ((Input.GetKeyUp(KeyCode.Space) || stamina <= 0)) 
         {
             playingDead = false;
             movementSpeed = walkSpeed;
-            deathSoundPlayed = false;
 
-            animator.SetBool("isDead", false);
+            GetComponent<BoxCollider2D>().enabled = true;
+
+            animator.SetBool("isDead", false); // esta linea de codigo no esta funcionando
             animator.SetBool(isMovingID, true);
            
 
@@ -341,6 +346,8 @@ public class PJ : MonoBehaviour
 
             SoundManager.Instance.PlaySound(deathSFX);
 
+            GetComponent<BoxCollider2D>().enabled = false;
+
             animator.SetBool(isMovingID, false);
             animator.SetBool("isDead", true);
 
@@ -372,21 +379,14 @@ public class PJ : MonoBehaviour
             StartCoroutine(ChangeToMenuMuerteScene());
             //Debug.Log("Me mori");
 
-            if (deathSoundPlayed == false)
-            {
-                SoundManager.Instance.PlaySound(deathSFX);
-                deathSoundPlayed = true;
-            }
-            else
-            {
-                return;
-            }
+            SoundManager.Instance.PlaySound(deathSFX);   
            
 
             isDead = true;
             animator.SetBool(isMovingID, false);
             animator.SetBool("isDead", true);
 
+            GetComponent<BoxCollider2D>().enabled = false;
 
             Invoke("ChangeToMenuMuerteScene", 2f);
         }
@@ -395,7 +395,7 @@ public class PJ : MonoBehaviour
     private IEnumerator ChangeToMenuMuerteScene()
     {
         // Esperar 2 segundos
-        yield return new WaitForSecondsRealtime(0.7f);
+        yield return new WaitForSecondsRealtime(1f);
 
         // Cargar la escena del men�
         SceneManager.LoadScene("Menu_muerteTab");
