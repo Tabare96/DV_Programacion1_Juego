@@ -303,6 +303,7 @@ MonoBehaviour:
   shootingPointLeft: {fileID: 872371672}
   prefab: {fileID: 1095059609514083359, guid: 89b6209f75d7a14418532d91c043bb04, type: 3}
   bulletSpeed: 15
+  shotCooldown: 0.7
   maxStamina: 10
   stamina: 10
   staminaDrain: 4
@@ -311,6 +312,7 @@ MonoBehaviour:
   staminaUI: {fileID: 1682370424}
   AmmoUI: {fileID: 371115129}
   shootSFX: {fileID: 8300000, guid: 1217546d8e5bc8a4591b59e1f5ca9c00, type: 3}
+  reloadSFX: {fileID: 8300000, guid: afddfd272cbbd8345803b826ecd7fb43, type: 3}
   deathSFX: {fileID: 8300000, guid: 62eaaeffdff0c9345bb1a50cba7b259c, type: 3}
   walkSounds:
   - {fileID: 8300000, guid: c1363d621b6391540b8b28346b8669ac, type: 3}

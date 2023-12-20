@@ -53,6 +53,9 @@ public class PJ : MonoBehaviour
     public Bullet prefab;
     public float bulletSpeed;
 
+    [SerializeField] private float shotCooldown;
+    private bool canShoot = true;
+
     private int maxMagAmmo = 7;
 
     private int magazineAmmo = 7;
@@ -149,12 +152,16 @@ public class PJ : MonoBehaviour
             shootingPoint = shootingPointUp;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && magazineAmmo > 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && magazineAmmo > 0 && canShoot)
         {
             shoot();
             magazineAmmo -= 1;
 
             AmmoUI.fillAmount = (float)magazineAmmo / maxMagAmmo;
+
+            canShoot = false;
+
+            StartCoroutine(cooldown(shotCooldown));
 
             //Debug.Log(magazineAmmo + " balas en la pistola");
         }
@@ -226,6 +233,13 @@ public class PJ : MonoBehaviour
 
         } 
 
+    }
+
+    private IEnumerator cooldown(float shootingCooldown)
+    {
+        yield return new WaitForSeconds(shootingCooldown);
+
+        canShoot = true;
     }
 
     void FixedUpdate()
