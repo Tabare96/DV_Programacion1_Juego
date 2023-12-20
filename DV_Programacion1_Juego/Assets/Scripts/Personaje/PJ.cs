@@ -10,6 +10,8 @@ public class PJ : MonoBehaviour
     [SerializeField]
     private float movementSpeed;
 
+    private bool slow = false;
+
     [SerializeField]
     private float sprintSpeed;
     [SerializeField]
@@ -166,18 +168,18 @@ public class PJ : MonoBehaviour
 
         // Sprint button
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && slow == false)
         {
             sprinting = true;
             sprint(sprinting);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) || stamina <= 0)
+        else if ((Input.GetKeyUp(KeyCode.LeftShift) || stamina <= 0) && slow == false)
         {
             sprinting = false;
             movementSpeed = walkSpeed;
         }
 
-        if (sprinting)
+        if (sprinting && slow == false)
         {
             stamina -= staminaDrain * Time.deltaTime;
             staminaUI.fillAmount = (float)stamina / maxStamina;
@@ -196,6 +198,8 @@ public class PJ : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     void FixedUpdate()
@@ -265,11 +269,24 @@ public class PJ : MonoBehaviour
 
     public float slowed(float slowing)
     {
-        return movementSpeed /= slowing;
+        slow = true;
+
+        if (sprinting == true)
+        {
+            sprinting = false;
+
+            movementSpeed = walkSpeed / slowing;
+            return movementSpeed;
+        }
+
+        else {return movementSpeed /= slowing; }
     }
 
     public float speedRegain(float slowing)
     {
+        slow = false;
+
+        movementSpeed = walkSpeed / slowing;
         return movementSpeed *= slowing;
     }
 
