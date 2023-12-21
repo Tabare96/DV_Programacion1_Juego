@@ -13,10 +13,10 @@ TagManager:
   - Paredes
   - Water
   - UI
-  - Piso
-  - Paredes detras
+  - Enemigos
   - Personajes
-  - Paredes frontales
+  - EnemyBullet
+  - 
   - 
   - 
   - 

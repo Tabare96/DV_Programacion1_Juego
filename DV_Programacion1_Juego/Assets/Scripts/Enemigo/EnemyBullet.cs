@@ -34,7 +34,6 @@ public class EnemyBullet : MonoBehaviour
         PJ player = collision.gameObject.GetComponent<PJ>();
         if (player != null)
         {
-            Debug.Log("Le pego al PJ");
             player.TakeDamage(1);
             Destroy(gameObject);
         }

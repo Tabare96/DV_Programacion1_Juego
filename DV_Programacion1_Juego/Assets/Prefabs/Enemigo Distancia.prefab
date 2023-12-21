@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8030167115423175593}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FirePoint Up
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8030167116069478428}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FirePoint Down
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8030167116337324363}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FirePoint Right
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8030167116526965601}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FirePoint Left
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 8030167116576758814}
   - component: {fileID: 8030167116576758815}
   - component: {fileID: 8030167116576758808}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemigo Distancia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,11 +369,11 @@ MonoBehaviour:
   shootingPointDown: {fileID: 8030167116069478428}
   shootingPointLeft: {fileID: 8030167116526965601}
   vida: 3
-  movementSpeed: 3
+  movementSpeed: 1
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 5827479245467207193, guid: c04940b69e97e7641ac8a564e46d195c, type: 3}
   projectilePrefab: {fileID: 5846030080111955633, guid: 23558e371d391254984ed83d1662c4b7, type: 3}
   upSprite: {fileID: -1122656106, guid: 378e354f996579d46abb3f85632afe1f, type: 3}
   downSprite: {fileID: -1657459, guid: 378e354f996579d46abb3f85632afe1f, type: 3}

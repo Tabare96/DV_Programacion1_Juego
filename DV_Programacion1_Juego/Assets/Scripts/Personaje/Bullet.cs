@@ -28,10 +28,17 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
         
         Enemigo enemigo = collision.gameObject.GetComponent<Enemigo>();
+        EnemigoADistancia demon = collision.gameObject.GetComponent<EnemigoADistancia>();
+
         if (enemigo != null)
         {
-            Debug.Log("Le pego a un enemigo");
+            //Debug.Log("Le pego a un enemigo");
             enemigo.TakeDamage(1);
+        }
+
+        if (demon != null)
+        {
+            demon.TakeDamage(1);
         }
     }
 }
