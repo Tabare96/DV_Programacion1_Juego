@@ -16,6 +16,9 @@ public class EnemigoADistancia : MonoBehaviour
     [SerializeField]
     private PJ player;
 
+    [SerializeField] 
+    private GameObject projectilePrefab;
+
     private int index = 0;
 
     // Sprites de dirección
@@ -71,6 +74,9 @@ public class EnemigoADistancia : MonoBehaviour
         }
         else if (!estaAtacando && !player.isDead && !player.playingDead)
         {
+
+
+
             // Si está en pantalla y no está atacando, ataca al jugador
             //recibo la dirección en la que se mueve
             Vector3 moveDirection = (player.transform.position - transform.position).normalized;
@@ -100,7 +106,7 @@ public class EnemigoADistancia : MonoBehaviour
             animator.SetBool("isMoving", false);
             estaAtacando = true;
 
-            // Activa la animación de ataque según la dirección
+            /*// Activa la animación de ataque según la dirección
             if (direction == Vector2.right)
                 animator.SetBool("atacandoDer", true);
             else if (direction == Vector2.up)
@@ -108,7 +114,7 @@ public class EnemigoADistancia : MonoBehaviour
             else if (direction == Vector2.left)
                 animator.SetBool("atacandoIzq", true);
             else if (direction == Vector2.down)
-                animator.SetBool("atacandoAbajo", true);
+                animator.SetBool("atacandoAbajo", true);*/
 
             StartCoroutine(volverAPatrullar(0.6f));
         }
