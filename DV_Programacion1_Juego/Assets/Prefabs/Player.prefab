@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5827479245467207194}
   - component: {fileID: 5827479245467207196}
   - component: {fileID: 5827479245467207187}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5827479246001520982}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FirePoint Down
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -361,7 +361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5827479246466276679}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FirePoint Up
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -392,7 +392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5827479246694127476}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FirePoint Right
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -423,7 +423,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5827479246824411348}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FirePoint Left
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}

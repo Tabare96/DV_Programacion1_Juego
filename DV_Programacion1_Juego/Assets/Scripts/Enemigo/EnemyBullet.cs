@@ -31,11 +31,24 @@ public class EnemyBullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+
+        EnemigoADistancia demon = collision.gameObject.GetComponent<EnemigoADistancia>();
+
+        if (demon != null)
+        {
+
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        } 
+            
+
         PJ player = collision.gameObject.GetComponent<PJ>();
         if (player != null)
         {
             player.TakeDamage(1);
-            Destroy(gameObject);
         }
     }
 }

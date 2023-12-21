@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 11857969}
   - component: {fileID: 11857968}
   - component: {fileID: 11857970}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BackWalls_Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18633,7 +18633,7 @@ GameObject:
   - component: {fileID: 889484320}
   - component: {fileID: 889484322}
   - component: {fileID: 889484321}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: FrontWalls_Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26897,7 +26897,7 @@ GameObject:
   - component: {fileID: 1440657758}
   - component: {fileID: 1440657760}
   - component: {fileID: 1440657759}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Floor_Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54796,7 +54796,7 @@ GameObject:
   - component: {fileID: 1626217323}
   - component: {fileID: 1626217322}
   - component: {fileID: 1626217324}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: WallEdges_Tilemaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62193,7 +62193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5827479246001520982, guid: c04940b69e97e7641ac8a564e46d195c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3
+      value: -1.22
       objectReference: {fileID: 0}
     - target: {fileID: 5827479246466276679, guid: c04940b69e97e7641ac8a564e46d195c, type: 3}
       propertyPath: m_LocalPosition.x
