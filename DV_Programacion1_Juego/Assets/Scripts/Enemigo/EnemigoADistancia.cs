@@ -6,6 +6,8 @@ public class EnemigoADistancia : MonoBehaviour
 {
     public GameObject enemyBulletPrefab;
     public float bulletSpeed = 7f;
+    public float tiempoUltimoDisparo;  // Nueva variable para rastrear el tiempo del último disparo
+
 
     public Transform shootingPointUp;
     public Transform shootingPointRight;
@@ -120,28 +122,33 @@ public class EnemigoADistancia : MonoBehaviour
             animator.SetBool("isMoving", false);
             estaAtacando = true;
 
-            FireBullet();
+            if (Time.time - tiempoUltimoDisparo >= 2f)
+            {
+                FireBullet();
+
+                // Actualiza el tiempo del último disparo
+                tiempoUltimoDisparo = Time.time;
+            }
 
             StartCoroutine(volverAPatrullar(0.6f));
         }
     }
     void FireBullet()
     {
-        Debug.Log("Enemigo atacando");
-
         // Obtén la posición del jugador
         Vector2 playerPosition = player.transform.position;
 
         // Instancia el proyectil y obtén su componente EnemyBullet
-        GameObject bullet = Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(enemyBulletPrefab, shootingPoint.position, Quaternion.identity);
         EnemyBullet enemyBullet = bullet.GetComponent<EnemyBullet>();
 
         if (enemyBullet != null)
         {
             // Configura la dirección del proyectil según la posición del jugador
-            enemyBullet.SetDirection((playerPosition - (Vector2)transform.position).normalized * bulletSpeed);
+            enemyBullet.SetDirection((playerPosition - (Vector2)shootingPoint.position).normalized * bulletSpeed);
         }
     }
+
     private IEnumerator volverAPatrullar(float seconds)
     {
         yield return new WaitForSeconds(seconds);

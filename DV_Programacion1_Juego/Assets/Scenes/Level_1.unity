@@ -60622,6 +60622,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 149409218}
     - target: {fileID: 8307987190924799429, guid: c1e337e2c2cfa0948bdb0692e7205dce, type: 3}
+      propertyPath: shootingPointUp
+      value: 
+      objectReference: {fileID: 1937791898}
+    - target: {fileID: 8307987190924799429, guid: c1e337e2c2cfa0948bdb0692e7205dce, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 5846030080111955633, guid: 23558e371d391254984ed83d1662c4b7, type: 3}
+    - target: {fileID: 8307987190924799429, guid: c1e337e2c2cfa0948bdb0692e7205dce, type: 3}
+      propertyPath: enemyBulletPrefab
+      value: 
+      objectReference: {fileID: 5846030080111955633, guid: 23558e371d391254984ed83d1662c4b7, type: 3}
+    - target: {fileID: 8307987190924799429, guid: c1e337e2c2cfa0948bdb0692e7205dce, type: 3}
+      propertyPath: shootingPointDown
+      value: 
+      objectReference: {fileID: 436873263}
+    - target: {fileID: 8307987190924799429, guid: c1e337e2c2cfa0948bdb0692e7205dce, type: 3}
+      propertyPath: shootingPointLeft
+      value: 
+      objectReference: {fileID: 835640146}
+    - target: {fileID: 8307987190924799429, guid: c1e337e2c2cfa0948bdb0692e7205dce, type: 3}
+      propertyPath: shootingPointRight
+      value: 
+      objectReference: {fileID: 169683320}
+    - target: {fileID: 8307987190924799429, guid: c1e337e2c2cfa0948bdb0692e7205dce, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
       objectReference: {fileID: 0}
