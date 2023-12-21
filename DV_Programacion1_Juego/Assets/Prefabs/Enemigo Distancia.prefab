@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6444847049901842263}
   - component: {fileID: 6444847049901842262}
-  - component: {fileID: 6444847049901842265}
   - component: {fileID: 6334955315009920643}
-  - component: {fileID: 4791114583629192544}
+  - component: {fileID: 8351588723860806923}
+  - component: {fileID: 7900986957273284308}
+  - component: {fileID: 8307987190924799429}
   m_Layer: 0
-  m_Name: Enemigo duplicado
+  m_Name: Enemigo Distancia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,10 +74,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 321759165, guid: 7bcd20dcf34b5d449ade24d2c1361220, type: 3}
+  m_SortingLayerID: -1213686577
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: -1657459, guid: 378e354f996579d46abb3f85632afe1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,37 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6444847049901842265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6444847049901842264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ec3e8932034fe4ca3b1a279c53e029, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBoss: 0
-  enemyPrefab: {fileID: 0}
-  vida: 3
-  movementSpeed: 3
-  waypoints:
-  - {fileID: 0}
-  player: {fileID: 0}
-  detectionDistance: 10
-  upSprite: {fileID: 21300000, guid: 5c9887df514796a45bfd7a926775a50d, type: 3}
-  downSprite: {fileID: 21300000, guid: 6d4c28c6c1d34a247846bb9638a64045, type: 3}
-  leftSprite: {fileID: 21300000, guid: 016cb23b4db91824bb2f002c13d4866b, type: 3}
-  rightSprite: {fileID: 21300000, guid: 5897ade948743514496c2ef67c0c7bf3, type: 3}
-  animator: {fileID: 0}
-  danioSFX: {fileID: 8300000, guid: 8863ae9df10d1994184b3e66f3bf677b, type: 3}
-  muerteSFX: {fileID: 8300000, guid: 6954def5b6489c541b18a346d654f4ae, type: 3}
-  estaAtacando: 0
-  distanciaAtaqueCuerpoACuerpo: 1.5
-  fadeDuration: 2
-  enemyRenderer: {fileID: 0}
 --- !u!70 &6334955315009920643
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -131,10 +101,10 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000063329935, y: 0}
-  m_Size: {x: 0.87, y: 1.66}
+  m_Offset: {x: -0.000000059604645, y: 0.036119223}
+  m_Size: {x: 1.0669252, y: 1.9150977}
   m_Direction: 0
---- !u!82 &4791114583629192544
+--- !u!82 &8351588723860806923
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,3 +200,50 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &7900986957273284308
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444847049901842264}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7448c1e61ae14734394995ef46a8ea8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8307987190924799429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444847049901842264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824c1fa32c107874883051144046760e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 3
+  movementSpeed: 3
+  waypoints: []
+  player: {fileID: 0}
+  upSprite: {fileID: -1122656106, guid: 378e354f996579d46abb3f85632afe1f, type: 3}
+  downSprite: {fileID: -1657459, guid: 378e354f996579d46abb3f85632afe1f, type: 3}
+  leftSprite: {fileID: -1193588761, guid: 378e354f996579d46abb3f85632afe1f, type: 3}
+  rightSprite: {fileID: 1409875259, guid: 378e354f996579d46abb3f85632afe1f, type: 3}
+  animator: {fileID: 0}
+  danioSFX: {fileID: 8300000, guid: 8863ae9df10d1994184b3e66f3bf677b, type: 3}
+  muerteSFX: {fileID: 8300000, guid: 6954def5b6489c541b18a346d654f4ae, type: 3}
+  estaAtacando: 0
+  fadeDuration: 2
+  enemyRenderer: {fileID: 6444847049901842262}
