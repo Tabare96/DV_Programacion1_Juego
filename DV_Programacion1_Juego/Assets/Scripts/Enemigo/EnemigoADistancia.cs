@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class EnemigoADistancia : MonoBehaviour
 {
+    public GameObject enemyBulletPrefab;
+    public float bulletSpeed = 7f;
+
+    public Transform shootingPointUp;
+    public Transform shootingPointRight;
+    public Transform shootingPointDown;
+    public Transform shootingPointLeft;
+
+    private Transform shootingPoint;
+
     [SerializeField]
     private int vida = 3;
 
@@ -86,18 +96,22 @@ public class EnemigoADistancia : MonoBehaviour
             if (angle >= -135f && angle < -45f) // Movimiento hacia la derecha
             {
                 direction = Vector2.right;
+                shootingPoint = shootingPointRight;
             }
             else if (angle >= -45f && angle < 45f) // Movimiento hacia arriba
             {
                 direction = Vector2.up;
+                shootingPoint = shootingPointUp;
             }
             else if (angle >= 45f && angle < 135f) // Movimiento hacia la izquierda
             {
                 direction = Vector2.left;
+                shootingPoint = shootingPointLeft;
             }
             else // Movimiento hacia abajo
             {
                 direction = Vector2.down;
+                shootingPoint = shootingPointDown;
             }
 
             Animations();
@@ -106,20 +120,28 @@ public class EnemigoADistancia : MonoBehaviour
             animator.SetBool("isMoving", false);
             estaAtacando = true;
 
-            /*// Activa la animación de ataque según la dirección
-            if (direction == Vector2.right)
-                animator.SetBool("atacandoDer", true);
-            else if (direction == Vector2.up)
-                animator.SetBool("atacandoArriba", true);
-            else if (direction == Vector2.left)
-                animator.SetBool("atacandoIzq", true);
-            else if (direction == Vector2.down)
-                animator.SetBool("atacandoAbajo", true);*/
+            FireBullet();
 
             StartCoroutine(volverAPatrullar(0.6f));
         }
     }
+    void FireBullet()
+    {
+        Debug.Log("Enemigo atacando");
 
+        // Obtén la posición del jugador
+        Vector2 playerPosition = player.transform.position;
+
+        // Instancia el proyectil y obtén su componente EnemyBullet
+        GameObject bullet = Instantiate(enemyBulletPrefab, transform.position, Quaternion.identity);
+        EnemyBullet enemyBullet = bullet.GetComponent<EnemyBullet>();
+
+        if (enemyBullet != null)
+        {
+            // Configura la dirección del proyectil según la posición del jugador
+            enemyBullet.SetDirection((playerPosition - (Vector2)transform.position).normalized * bulletSpeed);
+        }
+    }
     private IEnumerator volverAPatrullar(float seconds)
     {
         yield return new WaitForSeconds(seconds);
