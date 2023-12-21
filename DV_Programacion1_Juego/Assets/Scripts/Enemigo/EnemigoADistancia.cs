@@ -47,6 +47,7 @@ public class EnemigoADistancia : MonoBehaviour
     [SerializeField] private Animator animator;
     Vector2 direction;
     // Sonido
+    [SerializeField] private AudioClip shootSFX;
     [SerializeField] private AudioClip danioSFX;
     [SerializeField] private AudioClip muerteSFX;
 
@@ -117,7 +118,7 @@ public class EnemigoADistancia : MonoBehaviour
             }
 
             Animations();
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
+            //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
 
             animator.SetBool("isMoving", false);
             estaAtacando = true;
@@ -141,6 +142,8 @@ public class EnemigoADistancia : MonoBehaviour
         // Instancia el proyectil y obtén su componente EnemyBullet
         GameObject bullet = Instantiate(enemyBulletPrefab, shootingPoint.position, Quaternion.identity);
         EnemyBullet enemyBullet = bullet.GetComponent<EnemyBullet>();
+
+        SoundManager.Instance.PlaySound(shootSFX);
 
         if (enemyBullet != null)
         {

@@ -8,6 +8,7 @@ public class EnemyBullet : MonoBehaviour
     public float lifespan = 3f;
 
     private Vector2 direction;
+    [SerializeField]
     private Rigidbody2D rb;
 
     private void Start()
@@ -30,10 +31,12 @@ public class EnemyBullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Puedes agregar aquí la lógica de colisiones si es necesario
-
-        Destroy(gameObject);
-
-        // Aquí también podrías aplicar daño al jugador u otros objetos si es necesario
+        PJ player = collision.gameObject.GetComponent<PJ>();
+        if (player != null)
+        {
+            Debug.Log("Le pego al PJ");
+            player.TakeDamage(1);
+            Destroy(gameObject);
+        }
     }
 }
