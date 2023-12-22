@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemigo
+  - PuertaFinal
   layers:
   - Default
   - TransparentFX
@@ -12,11 +13,11 @@ TagManager:
   - Paredes
   - Water
   - UI
-  - Piso
-  - Paredes detras
+  - Enemigos
   - Personajes
-  - Paredes frontales
-  - 
+  - EnemyBullet
+  - PJ_Bullet
+  - Props
   - 
   - 
   - 

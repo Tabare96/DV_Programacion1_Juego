@@ -7,7 +7,6 @@ public class Trap : MonoBehaviour
     [SerializeField]
     private int slowing;
     
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         PJ player = other.GetComponentInParent<PJ>();

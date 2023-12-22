@@ -6,7 +6,7 @@ public class Enemigo : MonoBehaviour
 {
     [SerializeField]
     private bool isBoss = false;
-
+    
     [SerializeField]
     private GameObject enemyPrefab;
 
@@ -26,6 +26,8 @@ public class Enemigo : MonoBehaviour
     private float detectionDistance = 2f; // Variable para la distancia de detecci�n
 
     private int index = 0;
+
+    private bool isDying = false;
 
 
     // Sprites de direcci�n
@@ -50,23 +52,32 @@ public class Enemigo : MonoBehaviour
     [SerializeField]
     private float distanciaAtaqueCuerpoACuerpo = 1.5f;
 
+    [Header("Desvanecimiento")]
     [SerializeField]
-    private float fadeDuration = 0.5f;
-
+    private float fadeDuration = 2f;
+    [SerializeField]
     private SpriteRenderer enemyRenderer;
     private Material enemyMaterial;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        enemyRenderer = GetComponent<SpriteRenderer>();
-        enemyMaterial = Instantiate(enemyRenderer.material);
-        enemyRenderer.material = enemyMaterial;
+        enemyMaterial = enemyRenderer.material;
+    }
+
+    private void Awake()
+    {
+        if (gameObject.name == "EnemigoNuevo(Clone)")
+        {
+            waypoints[0] = GameObject.FindGameObjectWithTag("Player").GetComponent<PJ>().transform;
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PJ>();
+        }
+
     }
 
     private void Update()
     {
-        if (!estaAtacando && Vector3.Distance(transform.position, player.transform.position) < detectionDistance)
+        if (!estaAtacando && Vector3.Distance(transform.position, player.transform.position) < detectionDistance && !player.isDead && !player.playingDead && !isDying)
         {
             //recibo la direcci�n en la que se mueve
             Vector3 moveDirection = (player.transform.position - transform.position).normalized;
@@ -95,22 +106,27 @@ public class Enemigo : MonoBehaviour
             Animations();
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, movementSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
+            
+
+            if (/*player.isDead == false &&*/ Vector3.Distance(transform.position, player.transform.position) < distanciaAtaqueCuerpoACuerpo)
             {
-                animator.SetBool("isMoving", false);
-                estaAtacando = true;
+                if(!player.isDead && !player.playingDead)
+                {
+                    animator.SetBool("isMoving", false);
+                    estaAtacando = true;
 
-                // Activa la animaci�n de ataque seg�n la direcci�n
-                if (direction == Vector2.right)
-                    animator.SetBool("atacandoDer", true);
-                else if (direction == Vector2.up)
-                    animator.SetBool("atacandoArriba", true);
-                else if (direction == Vector2.left)
-                    animator.SetBool("atacandoIzq", true);
-                else if (direction == Vector2.down)
-                    animator.SetBool("atacandoAbajo", true);
+                    // Activa la animaci�n de ataque seg�n la direcci�n
+                    if (direction == Vector2.right)
+                        animator.SetBool("atacandoDer", true);
+                    else if (direction == Vector2.up)
+                        animator.SetBool("atacandoArriba", true);
+                    else if (direction == Vector2.left)
+                        animator.SetBool("atacandoIzq", true);
+                    else if (direction == Vector2.down)
+                        animator.SetBool("atacandoAbajo", true);
 
-                StartCoroutine(volverAPatrullar(0.6f));
+                    StartCoroutine(volverAPatrullar(0.6f));
+                }
             }
         }
         else if (!estaAtacando)
@@ -221,6 +237,11 @@ public class Enemigo : MonoBehaviour
 
         if (vida <= 0)
         {
+            isDying = true;
+
+            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<CapsuleCollider2D>().enabled = false;
+
             StartCoroutine(FadeAndDestroy());
 
             if (isBoss)
@@ -232,7 +253,7 @@ public class Enemigo : MonoBehaviour
             SoundManager.Instance.PlaySound(muerteSFX);
 
             // matamos al enemigo
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         else
         {
@@ -243,6 +264,7 @@ public class Enemigo : MonoBehaviour
 
     private IEnumerator FadeAndDestroy()
     {
+        
         float elapsedTime = 0f;
         Color startColor = enemyMaterial.color;
         Color targetColor = new Color(startColor.r, startColor.g, startColor.b, 0f); // Transparente

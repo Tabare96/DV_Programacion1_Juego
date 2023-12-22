@@ -17,8 +17,4 @@ public class KeyDoor : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
-
-
-
 }

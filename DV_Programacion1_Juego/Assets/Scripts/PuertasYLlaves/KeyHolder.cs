@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KeyHolder : MonoBehaviour
 {
@@ -56,6 +57,11 @@ public class KeyHolder : MonoBehaviour
                 keyDoor.OpenDoor();
                 RemoveKey(keyDoor.GetKeyType());
                 SoundManager.Instance.PlayOpenDoorSound();
+                // pregunto si el tag de la puerta es "PuertaBoss"
+                if (keyDoor.gameObject.tag == "PuertaFinal")
+                {
+                    SceneManager.LoadScene("Victoria");
+                }
             }
             else
             {

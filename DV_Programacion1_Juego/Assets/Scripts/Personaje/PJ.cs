@@ -17,6 +17,8 @@ public class PJ : MonoBehaviour
 
     private Animator animator;
 
+    private bool slow = false;
+
     [SerializeField]
     private float sprintSpeed;
     [SerializeField]
@@ -30,7 +32,7 @@ public class PJ : MonoBehaviour
     [SerializeField]
     private int health;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
     // Sprites de direcci�n
     [SerializeField]
@@ -58,6 +60,9 @@ public class PJ : MonoBehaviour
     public Bullet prefab;
     public float bulletSpeed;
 
+    [SerializeField] private float shotCooldown;
+    private bool canShoot = true;
+
     private int maxMagAmmo = 7;
 
     private int magazineAmmo = 7;
@@ -72,11 +77,14 @@ public class PJ : MonoBehaviour
     [SerializeField] private float staminaDrain = 10f;
     [SerializeField] private float staminaRegen = 5f;
 
+    public bool playingDead = false;
+
     [SerializeField] private Image staminaUI;
     [SerializeField] private Image AmmoUI;
 
 
     [SerializeField] private AudioClip shootSFX; // Sonido disparo
+    [SerializeField] private AudioClip reloadSFX; // Sonido recarga
     [SerializeField] private AudioClip deathSFX; // Sonido muerte
 
     [SerializeField] private List<AudioClip> walkSounds; // Lista de sonidos de pasos
@@ -91,11 +99,15 @@ public class PJ : MonoBehaviour
     private int isMovingID = Animator.StringToHash("isMoving");
 
 
+
     void Start()
     {
         footstepAudioSource = GetComponent<AudioSource>(); // Inicializamos el audio source
 
         animator = GetComponent<Animator>();
+
+        shootingPoint = shootingPointUp;
+
     }
 
     // Update is called once per frame
@@ -153,12 +165,16 @@ public class PJ : MonoBehaviour
             shootingPoint = shootingPointUp;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && magazineAmmo > 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && magazineAmmo > 0 && canShoot)
         {
             shoot();
             magazineAmmo -= 1;
 
             AmmoUI.fillAmount = (float)magazineAmmo / maxMagAmmo;
+
+            canShoot = false;
+
+            StartCoroutine(cooldown(shotCooldown));
 
             //Debug.Log(magazineAmmo + " balas en la pistola");
         }
@@ -166,31 +182,38 @@ public class PJ : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             //Debug.Log("Recargaste");
-
+         
             if (magazineAmmo < maxMagAmmo)
             {
                 magazineAmmo = maxMagAmmo;
+                SoundManager.Instance.PlaySound(reloadSFX);
             }
+ 
 
             AmmoUI.fillAmount = (float)magazineAmmo / maxMagAmmo;
         }
 
         // Sprint button
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && slow == false && playingDead == false)
         {
             sprinting = true;
             sprint(sprinting);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) || stamina <= 0)
+        else if ((Input.GetKeyUp(KeyCode.LeftShift) || stamina <= 0) && slow == false && playingDead == false)
         {
             sprinting = false;
             movementSpeed = walkSpeed;
         }
 
-        if (sprinting)
+        if ((sprinting && slow == false))
         {
             stamina -= staminaDrain * Time.deltaTime;
+            staminaUI.fillAmount = (float)stamina / maxStamina;
+        }
+        else if (playingDead) //stamina drain por hacerse el muerto es mas lento que por correr
+        {
+            stamina -= (staminaDrain/2) * Time.deltaTime;
             staminaUI.fillAmount = (float)stamina / maxStamina;
         }
         else
@@ -207,6 +230,35 @@ public class PJ : MonoBehaviour
                 }
             }
         }
+
+        // play dead
+
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playingDead = true;
+            PlayDead(playingDead);
+        }
+        else if ((Input.GetKeyUp(KeyCode.Space) || stamina <= 0)) 
+        {
+            playingDead = false;
+            movementSpeed = walkSpeed;
+
+            GetComponent<BoxCollider2D>().enabled = true;
+
+            animator.SetBool("isDead", false); // esta linea de codigo no esta funcionando
+            animator.SetBool(isMovingID, true);
+           
+
+        } 
+
+    }
+
+    private IEnumerator cooldown(float shootingCooldown)
+    {
+        yield return new WaitForSeconds(shootingCooldown);
+
+        canShoot = true;
     }
 
     void FixedUpdate()
@@ -220,7 +272,7 @@ public class PJ : MonoBehaviour
         myRigidbody.MovePosition(myRigidbody.position + movement * movementSpeed * Time.fixedDeltaTime);
 
         // Reproduce un sonido de paso aleatorio cuando el personaje se mueve
-        if (movement.magnitude > 0.1f && !footstepAudioSource.isPlaying)
+        if (movement.magnitude > 0.1f && !footstepAudioSource.isPlaying && !playingDead)
         {
             // Elegir aleatoriamente un sonido de paso de la lista
             AudioClip randomWalkSound = walkSounds[Random.Range(0, walkSounds.Count)];
@@ -273,13 +325,56 @@ public class PJ : MonoBehaviour
 
     public float slowed(float slowing)
     {
-        return movementSpeed /= slowing;
+        slow = true;
+
+        if (sprinting == true)
+        {
+            sprinting = false;
+
+            movementSpeed = walkSpeed / slowing;
+            return movementSpeed;
+        }
+
+        else {return movementSpeed /= slowing; }
     }
 
     public float speedRegain(float slowing)
     {
+        slow = false;
+
+        movementSpeed = walkSpeed / slowing;
         return movementSpeed *= slowing;
     }
+
+    
+    public void PlayDead(bool playingDead)
+    {
+        if (staminaRegenerated)
+        {
+            playingDead = true;
+            
+            movementSpeed = 0;
+
+            SoundManager.Instance.PlaySound(deathSFX);
+
+            GetComponent<BoxCollider2D>().enabled = false;
+
+            animator.SetBool(isMovingID, false);
+            animator.SetBool("isDead", true);
+
+
+            if (stamina <= 0)
+            {
+                staminaRegenerated = false;
+            }
+        }
+        else
+        {
+            playingDead = false;
+        }
+    }
+    
+
 
     public void TakeDamage(int damage)
     {
@@ -287,26 +382,22 @@ public class PJ : MonoBehaviour
 
         if (health <= 0)
         {
-            //Debug.Log("Me mori");
-
-            SoundManager.Instance.PlaySound(deathSFX);
 
             isDead = true;
 
-            Debug.Log("Me mori");
-
-            SoundManager.Instance.PlaySound(deathSFX);
-
-            Time.timeScale = 0f; // Pausar el juego
+            //Time.timeScale = 0f; // Pausar el juego
 
             StartCoroutine(ChangeToMenuMuerteScene());
             //Debug.Log("Me mori");
 
-            SoundManager.Instance.PlaySound(deathSFX);
+            SoundManager.Instance.PlaySound(deathSFX);   
+           
 
             isDead = true;
             animator.SetBool(isMovingID, false);
             animator.SetBool("isDead", true);
+
+            GetComponent<BoxCollider2D>().enabled = false;
 
             Invoke("ChangeToMenuMuerteScene", 2f);
         }
@@ -315,13 +406,13 @@ public class PJ : MonoBehaviour
     private IEnumerator ChangeToMenuMuerteScene()
     {
         // Esperar 2 segundos
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(1f);
 
         // Cargar la escena del men�
         SceneManager.LoadScene("Menu_muerteTab");
 
         // Reiniciar la escala de tiempo
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
