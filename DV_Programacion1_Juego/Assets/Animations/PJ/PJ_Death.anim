@@ -6,11 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< HEAD:DV_Programacion1_Juego/Assets/Animations/PJ/PJ_Death.anim
   m_Name: PJ_Death
-========
-  m_Name: QuietoIzquierda
->>>>>>>> Tabare:DV_Programacion1_Juego/Assets/Sprites/Personajes/PJ/QuietoIzquierda.anim
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -24,7 +20,6 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-<<<<<<<< HEAD:DV_Programacion1_Juego/Assets/Animations/PJ/PJ_Death.anim
       value: {fileID: 1118302828, guid: 7c3e7a11943084842aeac06c90aa03c0, type: 3}
     - time: 0.083333336
       value: {fileID: -401422211, guid: 7c3e7a11943084842aeac06c90aa03c0, type: 3}
@@ -34,9 +29,6 @@ AnimationClip:
       value: {fileID: -1070874898, guid: 7c3e7a11943084842aeac06c90aa03c0, type: 3}
     - time: 0.33333334
       value: {fileID: -864586602, guid: 7c3e7a11943084842aeac06c90aa03c0, type: 3}
-========
-      value: {fileID: 21300000, guid: 50f94a3c519275248af423deaa225c39, type: 3}
->>>>>>>> Tabare:DV_Programacion1_Juego/Assets/Sprites/Personajes/PJ/QuietoIzquierda.anim
     attribute: m_Sprite
     path: 
     classID: 212
@@ -56,25 +48,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-<<<<<<<< HEAD:DV_Programacion1_Juego/Assets/Animations/PJ/PJ_Death.anim
     - {fileID: 1118302828, guid: 7c3e7a11943084842aeac06c90aa03c0, type: 3}
     - {fileID: -401422211, guid: 7c3e7a11943084842aeac06c90aa03c0, type: 3}
     - {fileID: -359265016, guid: 7c3e7a11943084842aeac06c90aa03c0, type: 3}
     - {fileID: -1070874898, guid: 7c3e7a11943084842aeac06c90aa03c0, type: 3}
     - {fileID: -864586602, guid: 7c3e7a11943084842aeac06c90aa03c0, type: 3}
-========
-    - {fileID: 21300000, guid: 50f94a3c519275248af423deaa225c39, type: 3}
->>>>>>>> Tabare:DV_Programacion1_Juego/Assets/Sprites/Personajes/PJ/QuietoIzquierda.anim
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-<<<<<<<< HEAD:DV_Programacion1_Juego/Assets/Animations/PJ/PJ_Death.anim
     m_StopTime: 0.4166667
-========
-    m_StopTime: 0.083333336
->>>>>>>> Tabare:DV_Programacion1_Juego/Assets/Sprites/Personajes/PJ/QuietoIzquierda.anim
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

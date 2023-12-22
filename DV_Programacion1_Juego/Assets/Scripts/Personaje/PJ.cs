@@ -19,12 +19,6 @@ public class PJ : MonoBehaviour
 
     private bool slow = false;
 
-    [SerializeField]
-    private float sprintSpeed;
-    [SerializeField]
-    private float walkSpeed;
-
-    private Animator animator;
 
     [SerializeField]
     private Rigidbody2D myRigidbody;
@@ -93,11 +87,6 @@ public class PJ : MonoBehaviour
 
 
     private int isMovingID = Animator.StringToHash("isMoving");
-
-
-
-    private int isMovingID = Animator.StringToHash("isMoving");
-
 
 
     void Start()

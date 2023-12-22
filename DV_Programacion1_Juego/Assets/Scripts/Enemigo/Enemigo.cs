@@ -142,14 +142,6 @@ public class Enemigo : MonoBehaviour
             StartCoroutine(volverAPatrullar(0.6f));
         }
     }
-    
-    private IEnumerator volverAPatrullar(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        animator.SetBool("isMoving", true);
-        estaAtacando = false;
-        animator.SetBool("atacando", false);
-    }
 
     private IEnumerator volverAPatrullar(float seconds)
     {
