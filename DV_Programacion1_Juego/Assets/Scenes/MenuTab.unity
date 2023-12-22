@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 207.18991, y: 28}
+  m_AnchoredPosition: {x: 207.18991, y: 33}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138260465
@@ -315,8 +315,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nWASD: Move\r\n\nMouse 1: Shoot\r\n\nR: Reload\r\n\nSpace: Play dead\r\n\nShift:
-    Sprint\r"
+  m_text: "\nWASD: Move\r\n\nMouse 1: Shoot\r\n\nMouse 2: 3 round burst\n\nR: Reload\r\n\nSpace:
+    Play dead\r\n\nShift: Sprint\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 60d9f3c60181f0d4bad0df47f50a56b6, type: 2}
   m_sharedMaterial: {fileID: -9157507135045484306, guid: 60d9f3c60181f0d4bad0df47f50a56b6, type: 2}
@@ -343,8 +343,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

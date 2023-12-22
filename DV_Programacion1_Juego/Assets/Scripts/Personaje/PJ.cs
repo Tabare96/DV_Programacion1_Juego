@@ -74,6 +74,11 @@ public class PJ : MonoBehaviour
 
     [SerializeField] private Image staminaUI;
     [SerializeField] private Image AmmoUI;
+    [SerializeField] private Image RoundBurstUI;
+
+    private float burstCooldown = 1;
+    [SerializeField] private float burstRecharge = 0.01f;
+    private bool burstRecharged = true;
 
 
     [SerializeField] private AudioClip shootSFX; // Sonido disparo
@@ -181,6 +186,45 @@ public class PJ : MonoBehaviour
 
             AmmoUI.fillAmount = (float)magazineAmmo / maxMagAmmo;
         }
+
+        // 3 round burst
+        
+        if (burstCooldown < 1)
+        {
+            burstRecharged = false;
+        }
+
+        if (Input.GetMouseButtonDown(1) && magazineAmmo >= 3 && canShoot && burstRecharged)
+        {
+            burstCooldown = 0;
+            StartCoroutine(ShootBurst(3));
+        }
+        else if (Input.GetMouseButtonDown(1) && magazineAmmo == 2 && canShoot && burstRecharged)
+        {
+            burstCooldown = 0;
+            StartCoroutine(ShootBurst(2));
+        }
+        else if (Input.GetMouseButtonDown(1) && magazineAmmo == 1 && canShoot && burstRecharged)
+        {
+            burstCooldown = 0;
+            StartCoroutine(ShootBurst(1));
+        }
+        else //se regenera el cooldown
+        {
+            if (burstCooldown <= 1)
+            {
+                burstCooldown += burstRecharge * Time.deltaTime;
+                RoundBurstUI.fillAmount = (float)burstCooldown;
+
+                if (burstCooldown >= 1)
+                {
+                    burstRecharged = true;
+                    burstCooldown = 1;
+                }
+            }
+        }
+
+
 
         // Sprint button
 
@@ -393,6 +437,27 @@ public class PJ : MonoBehaviour
 
             Invoke("ChangeToMenuMuerteScene", 2f);
         }
+    }
+
+    private IEnumerator ShootBurst(int bullets)
+    {
+        for (int i = 0; i < bullets; i++)
+        {
+
+            shoot();
+            magazineAmmo -= 1;
+
+            AmmoUI.fillAmount = (float)magazineAmmo / maxMagAmmo;
+
+            canShoot = false;
+
+            StartCoroutine(cooldown(shotCooldown));
+
+            yield return new WaitForSeconds(0.15f);
+
+        }
+        // Restablecer canShoot después de la ráfaga de disparos
+        canShoot = true;
     }
 
     private IEnumerator ChangeToMenuMuerteScene()
