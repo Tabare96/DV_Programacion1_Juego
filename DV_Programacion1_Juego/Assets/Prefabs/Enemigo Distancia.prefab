@@ -369,7 +369,7 @@ MonoBehaviour:
   shootingPointDown: {fileID: 8030167116069478428}
   shootingPointLeft: {fileID: 8030167116526965601}
   vida: 3
-  movementSpeed: 1
+  movementSpeed: 0.5
   waypoints:
   - {fileID: 0}
   - {fileID: 0}

@@ -236,8 +236,10 @@ public class EnemigoADistancia : MonoBehaviour
             // Reproduce el sonido de muerte utilizando el SoundManager
             SoundManager.Instance.PlaySound(muerteSFX);
 
+            GetComponent<CapsuleCollider2D>().enabled = false;
+
             // matamos al enemigo
-            Destroy(gameObject);
+            StartCoroutine(FadeAndDestroy());
         }
         else
         {

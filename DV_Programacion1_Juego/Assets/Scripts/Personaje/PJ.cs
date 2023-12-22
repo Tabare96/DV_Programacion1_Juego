@@ -94,6 +94,9 @@ public class PJ : MonoBehaviour
         footstepAudioSource = GetComponent<AudioSource>(); // Inicializamos el audio source
 
         animator = GetComponent<Animator>();
+
+        shootingPoint = shootingPointUp;
+
     }
 
     // Update is called once per frame
