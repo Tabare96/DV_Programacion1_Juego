@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 14820804}
   - component: {fileID: 14820803}
   - component: {fileID: 14820802}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -559,7 +559,7 @@ GameObject:
   - component: {fileID: 95131486}
   - component: {fileID: 95131488}
   - component: {fileID: 95131487}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 175020220}
   - component: {fileID: 175020222}
   - component: {fileID: 175020221}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1411,7 +1411,7 @@ GameObject:
   - component: {fileID: 455626778}
   - component: {fileID: 455626780}
   - component: {fileID: 455626779}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1553,7 +1553,7 @@ GameObject:
   - component: {fileID: 499391680}
   - component: {fileID: 499391682}
   - component: {fileID: 499391681}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1867,7 +1867,7 @@ GameObject:
   - component: {fileID: 549386118}
   - component: {fileID: 549386120}
   - component: {fileID: 549386119}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1979,7 +1979,7 @@ GameObject:
   - component: {fileID: 553218912}
   - component: {fileID: 553218911}
   - component: {fileID: 553218910}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: WallEdges_Tilemaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3081,7 +3081,7 @@ GameObject:
   - component: {fileID: 668804360}
   - component: {fileID: 668804362}
   - component: {fileID: 668804361}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3192,7 +3192,7 @@ GameObject:
   - component: {fileID: 670641238}
   - component: {fileID: 670641240}
   - component: {fileID: 670641239}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3301,7 +3301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 707329775}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FirePoint Down
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -3334,7 +3334,7 @@ GameObject:
   - component: {fileID: 742369197}
   - component: {fileID: 742369199}
   - component: {fileID: 742369198}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3445,7 +3445,7 @@ GameObject:
   - component: {fileID: 747550922}
   - component: {fileID: 747550924}
   - component: {fileID: 747550923}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: FrontWalls_Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4378,7 +4378,7 @@ GameObject:
   - component: {fileID: 769246424}
   - component: {fileID: 769246423}
   - component: {fileID: 769246422}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PropDetails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4591,7 +4591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 872371672}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FirePoint Left
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -4700,7 +4700,7 @@ GameObject:
   - component: {fileID: 930237614}
   - component: {fileID: 930237616}
   - component: {fileID: 930237615}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4811,7 +4811,7 @@ GameObject:
   - component: {fileID: 955838224}
   - component: {fileID: 955838226}
   - component: {fileID: 955838225}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5037,7 +5037,7 @@ GameObject:
   - component: {fileID: 984151723}
   - component: {fileID: 984151725}
   - component: {fileID: 984151724}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5147,7 +5147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1021215112}
   - component: {fileID: 1021215113}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Escritorios
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5231,7 +5231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1023901116}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5575,7 +5575,7 @@ GameObject:
   - component: {fileID: 1131711990}
   - component: {fileID: 1131711989}
   - component: {fileID: 1131711988}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Props_Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5967,7 +5967,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1140051003}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FirePoint Up
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -5989,37 +5989,6 @@ Transform:
   m_Father: {fileID: 14820809}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!1 &1148553627
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1148553628}
-  m_Layer: 7
-  m_Name: Paredes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1148553628
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148553627}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2130438452}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1199930691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6032,7 +6001,7 @@ GameObject:
   - component: {fileID: 1199930695}
   - component: {fileID: 1199930694}
   - component: {fileID: 1199930693}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BackWalls_Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7009,7 +6978,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1238706701}
   - component: {fileID: 1238706702}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Bibliotecas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7095,7 +7064,7 @@ GameObject:
   - component: {fileID: 1258001944}
   - component: {fileID: 1258001946}
   - component: {fileID: 1258001945}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7206,7 +7175,7 @@ GameObject:
   - component: {fileID: 1313598532}
   - component: {fileID: 1313598534}
   - component: {fileID: 1313598533}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7446,7 +7415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1378756500}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: FirePoint Right
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -7536,7 +7505,7 @@ GameObject:
   - component: {fileID: 1476800307}
   - component: {fileID: 1476800309}
   - component: {fileID: 1476800308}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7648,7 +7617,7 @@ GameObject:
   - component: {fileID: 1489260461}
   - component: {fileID: 1489260460}
   - component: {fileID: 1489260459}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Props_Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7923,7 +7892,7 @@ GameObject:
   - component: {fileID: 1519171738}
   - component: {fileID: 1519171740}
   - component: {fileID: 1519171739}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Tilemap_Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12549,7 +12518,7 @@ GameObject:
   - component: {fileID: 1652836914}
   - component: {fileID: 1652836916}
   - component: {fileID: 1652836915}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12741,7 +12710,7 @@ GameObject:
   - component: {fileID: 1697949921}
   - component: {fileID: 1697949923}
   - component: {fileID: 1697949922}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12928,7 +12897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1757868149}
   - component: {fileID: 1757868150}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Plantas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13045,7 +13014,7 @@ GameObject:
   - component: {fileID: 1792196028}
   - component: {fileID: 1792196030}
   - component: {fileID: 1792196029}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13267,7 +13236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1854106307}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13561,7 +13530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6444847049901842264, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6444847049901842264, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: m_TagString
@@ -13873,7 +13842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2018190169}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13910,7 +13879,7 @@ GameObject:
   - component: {fileID: 2037810826}
   - component: {fileID: 2037810828}
   - component: {fileID: 2037810827}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14119,7 +14088,7 @@ GameObject:
   - component: {fileID: 2100030311}
   - component: {fileID: 2100030313}
   - component: {fileID: 2100030312}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14250,7 +14219,6 @@ Transform:
   - {fileID: 1021215112}
   - {fileID: 1757868149}
   - {fileID: 1238706701}
-  - {fileID: 1148553628}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14429,7 +14397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6444847049901842264, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6444847049901842264, guid: c1723abce4bed8345a655bb103238a6c, type: 3}
       propertyPath: m_TagString
