@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 207.18991, y: 33}
+  m_AnchoredPosition: {x: 244, y: 33}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &138260465
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -56.390625, y: -161.77992, z: -224.03812, w: -193.8797}
+  m_margin: {x: -56.390625, y: -161.77992, z: -178.0151, w: -193.8797}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cbe72a86251c2f941adbb645163694fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a0d507cb31c62b45be2e2f6c05b105f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -527,7 +527,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cbe72a86251c2f941adbb645163694fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a0d507cb31c62b45be2e2f6c05b105f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -779,7 +779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &353635875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -866,10 +866,10 @@ MonoBehaviour:
 
 
 
-    tabare sanchez
+    Tabare Sanchez
 
 
-    tomas racciatti'
+    Tomas Racciatti'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 60d9f3c60181f0d4bad0df47f50a56b6, type: 2}
   m_sharedMaterial: {fileID: -9157507135045484306, guid: 60d9f3c60181f0d4bad0df47f50a56b6, type: 2}
@@ -2435,7 +2435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cbe72a86251c2f941adbb645163694fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a0d507cb31c62b45be2e2f6c05b105f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
