@@ -34,15 +34,8 @@ public class EnemyBullet : MonoBehaviour
 
         EnemigoADistancia demon = collision.gameObject.GetComponent<EnemigoADistancia>();
 
-        if (demon != null)
-        {
 
-        }
-
-        else
-        {
-            Destroy(gameObject);
-        } 
+        Destroy(gameObject);
             
 
         PJ player = collision.gameObject.GetComponent<PJ>();

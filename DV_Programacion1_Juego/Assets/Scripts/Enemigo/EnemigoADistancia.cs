@@ -53,6 +53,8 @@ public class EnemigoADistancia : MonoBehaviour
 
     public bool estaAtacando = false;
 
+    private bool isDying = false;
+
 
     [Header("Desvanecimiento")]
     [SerializeField]
@@ -123,7 +125,7 @@ public class EnemigoADistancia : MonoBehaviour
             animator.SetBool("isMoving", false);
             estaAtacando = true;
 
-            if (Time.time - tiempoUltimoDisparo >= 2f)
+            if (Time.time - tiempoUltimoDisparo >= 2f && !isDying)
             {
                 FireBullet();
 
@@ -229,6 +231,8 @@ public class EnemigoADistancia : MonoBehaviour
 
         if (vida <= 0)
         {
+            isDying = true;
+            
             // Reproduce el sonido de muerte utilizando el SoundManager
             SoundManager.Instance.PlaySound(muerteSFX);
 

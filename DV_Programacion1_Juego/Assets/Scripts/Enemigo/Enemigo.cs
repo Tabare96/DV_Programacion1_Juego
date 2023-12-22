@@ -27,6 +27,8 @@ public class Enemigo : MonoBehaviour
 
     private int index = 0;
 
+    private bool isDying = false;
+
 
     // Sprites de dirección
     [SerializeField]
@@ -75,7 +77,7 @@ public class Enemigo : MonoBehaviour
 
     private void Update()
     {
-        if (!estaAtacando && Vector3.Distance(transform.position, player.transform.position) < detectionDistance && !player.isDead && !player.playingDead)
+        if (!estaAtacando && Vector3.Distance(transform.position, player.transform.position) < detectionDistance && !player.isDead && !player.playingDead && !isDying)
         {
             //recibo la dirección en la que se mueve
             Vector3 moveDirection = (player.transform.position - transform.position).normalized;
@@ -220,6 +222,11 @@ public class Enemigo : MonoBehaviour
 
         if (vida <= 0)
         {
+            isDying = true;
+
+            GetComponent<BoxCollider2D>().enabled = false;
+            GetComponent<CapsuleCollider2D>().enabled = false;
+
             StartCoroutine(FadeAndDestroy());
 
             if (isBoss)
@@ -242,6 +249,7 @@ public class Enemigo : MonoBehaviour
 
     private IEnumerator FadeAndDestroy()
     {
+        
         float elapsedTime = 0f;
         Color startColor = enemyMaterial.color;
         Color targetColor = new Color(startColor.r, startColor.g, startColor.b, 0f); // Transparente
